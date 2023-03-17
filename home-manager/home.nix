@@ -29,6 +29,8 @@
     };
   };
 
+  targets.genericLinux.enable = true;
+
   home = {
     username = "alex";
     homeDirectory = "/home/alex";
@@ -36,14 +38,27 @@
 
   xdg.enable = true;
 
-  home.packages = with pkgs; [ obsidian ];
+  home.packages = with pkgs; [
+    obsidian
+    discord
+    bitwarden
+    bitwarden-cli
+    beancount
+  ];
 
   programs.home-manager.enable = true;
+  programs.firefox.enable = true;
+  programs.htop.enable    = true;
+
   programs.git = {
     enable = true;
     userName = "Alex Bechanko";
     userEmail = "alexbechanko@gmail.com";
-    extraConfig.init.defaultBranch = "main";
+    extraConfig = {
+      init.defaultBranch = "main";
+      diff.tool = "vimdiff";
+      difftool.prompt = false;
+    };
   };
 
 
@@ -53,25 +68,19 @@
   };
 
   programs.neovim = {
-    enable = true;
-
-    viAlias      = true;
-    vimAlias     = true;
-    vimdiffAlias = true;
-
+    enable        = true;
+    viAlias       = true;
+    vimAlias      = true;
+    vimdiffAlias  = true;
     defaultEditor = true;
 
     extraLuaConfig = builtins.readFile ../config/neovim/init.lua;
-
-
-
-    plugins = [
-      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-
-      pkgs.vimPlugins.nvim-lspconfig
-      pkgs.vimPlugins.plenary-nvim
-      pkgs.vimPlugins.gruvbox-material
-      pkgs.vimPlugins.vim-nix
+    plugins = with pkgs.vimPlugins; [
+      nvim-treesitter.withAllGrammars
+      nvim-lspconfig
+      plenary-nvim
+      gruvbox-material
+      vim-nix
     ];
   };
 
