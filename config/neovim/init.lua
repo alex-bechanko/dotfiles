@@ -1,23 +1,23 @@
 
 -- Plugins
-require('packer').startup(function(use)
+--require('packer').startup(function(use)
 
     -- package management
-    use 'wbthomason/packer.nvim'
+--    use 'wbthomason/packer.nvim'
 
     -- defaults
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use 'tpope/vim-fugitive'
-    use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.1',
-      requires = { {'nvim-lua/plenary.nvim'} }
-    }
+--    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+--    use 'tpope/vim-fugitive'
+--    use {
+--      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+--      requires = { {'nvim-lua/plenary.nvim'} }
+--    }
 
     -- colorschemes
-    use 'marko-cerovac/material.nvim'
-    use 'folke/tokyonight.nvim'
+--    use 'marko-cerovac/material.nvim'
+--   use 'folke/tokyonight.nvim'
 
-end)
+--end)
 
 -- Global Options
 vim.opt.number     = true
@@ -28,8 +28,7 @@ vim.opt.smarttab   = true
 vim.opt.ruler      = true
 
 -- Colorscheme
-vim.g.material_style = 'deep ocean'
-vim.cmd[[colorscheme material]]
+vim.cmd[[colorscheme gruvbox-material]]
 
 
 -- Lua

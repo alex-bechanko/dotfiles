@@ -34,10 +34,17 @@
     homeDirectory = "/home/alex";
   };
 
-  # home.packages = with pkgs; [ steam ];
+  xdg.enable = true;
+
+  home.packages = with pkgs; [ obsidian ];
 
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Alex Bechanko";
+    userEmail = "alexbechanko@gmail.com";
+    extraConfig.init.defaultBranch = "main";
+  };
 
 
   programs.bash = {
@@ -54,9 +61,6 @@
 
     defaultEditor = true;
 
-    withRuby = false;
-    withPython3 = false;
-
     extraLuaConfig = builtins.readFile ../config/neovim/init.lua;
 
 
@@ -67,6 +71,7 @@
       pkgs.vimPlugins.nvim-lspconfig
       pkgs.vimPlugins.plenary-nvim
       pkgs.vimPlugins.gruvbox-material
+      pkgs.vimPlugins.vim-nix
     ];
   };
 
