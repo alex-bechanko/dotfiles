@@ -29,19 +29,46 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "alex";
     homeDirectory = "/home/alex";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+
+
+  programs.bash = {
+    enable = true;
+    bashrcExtra = builtins.readFile ../config/bash/bashrc;
+  };
+
+  programs.neovim = {
+    enable = true;
+
+    viAlias      = true;
+    vimAlias     = true;
+    vimdiffAlias = true;
+
+    defaultEditor = true;
+
+    withRuby = false;
+    withPython3 = false;
+
+    extraLuaConfig = builtins.readFile ../config/neovim/init.lua;
+
+
+
+    plugins = [
+      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+
+      pkgs.vimPlugins.nvim-lspconfig
+      pkgs.vimPlugins.plenary-nvim
+      pkgs.vimPlugins.gruvbox-material
+    ];
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
