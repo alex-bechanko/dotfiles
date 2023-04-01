@@ -56,8 +56,7 @@
     userEmail = "alexbechanko@gmail.com";
     extraConfig = {
       init.defaultBranch = "main";
-      diff.tool = "vimdiff";
-      difftool.prompt = false;
+      core.pager = "less";
     };
   };
 
@@ -79,10 +78,17 @@
       nvim-treesitter.withAllGrammars
       nvim-lspconfig
       plenary-nvim
-      gruvbox-material
       vim-nix
+      onedark-nvim
     ];
   };
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

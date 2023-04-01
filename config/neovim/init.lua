@@ -28,8 +28,11 @@ vim.opt.smarttab   = true
 vim.opt.ruler      = true
 
 -- Colorscheme
-vim.cmd[[colorscheme gruvbox-material]]
+require('onedark').setup {
+  style = 'warmer'
+}
 
+require('onedark').load()
 
 -- Lua
 vim.api.nvim_create_autocmd(
