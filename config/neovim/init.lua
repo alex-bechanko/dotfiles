@@ -34,6 +34,13 @@ require('onedark').setup {
 
 require('onedark').load()
 
+
+-- indent lines
+require('indent_blankline').setup {
+  show_current_context = true,
+  show_current_context_start = true,
+}
+
 -- Lua
 vim.api.nvim_create_autocmd(
   "FileType",

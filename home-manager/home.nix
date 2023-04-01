@@ -38,6 +38,8 @@
 
   xdg.enable = true;
 
+  home.file.".cobra.yaml".source = ../config/cobra/cobra.yaml;
+
   home.packages = with pkgs; [
     obsidian
     discord
@@ -80,6 +82,7 @@
       plenary-nvim
       vim-nix
       onedark-nvim
+      indent-blankline-nvim
     ];
   };
 
