@@ -63,6 +63,7 @@
     bitwarden
     bitwarden-cli
     beancount
+    tree
   ];
 
   programs.home-manager.enable = true;
