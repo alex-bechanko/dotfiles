@@ -62,3 +62,30 @@ vim.api.nvim_create_autocmd(
       vim.opt.expandtab = true
     end
 })
+
+
+-- Go
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = "go",
+    callback = function()
+      vim.opt.tabstop = 4
+      vim.opt.softtabstop = 4
+      vim.opt.shiftwidth = 4
+      vim.opt.expandtab = false
+
+      require('go').setup()
+    end
+  }
+)
+
+-- Autoformat go files on save
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimport()
+  end,
+  group = format_sync_grp,
+})

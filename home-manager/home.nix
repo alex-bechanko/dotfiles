@@ -83,6 +83,7 @@
       vim-nix
       onedark-nvim
       indent-blankline-nvim
+      go-nvim
     ];
   };
 
