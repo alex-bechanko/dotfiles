@@ -55,7 +55,7 @@
 
   xdg.enable = true;
 
-  home.file.".cobra.yaml".source = ../config/cobra-cli/cobra.yaml;
+  home.file.".cobra.yaml".source = ./config/cobra-cli/cobra.yaml;
 
   home.packages = with pkgs; [
     obsidian
