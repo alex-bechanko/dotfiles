@@ -83,7 +83,7 @@
 
   programs.bash = {
     enable = true;
-    bashrcExtra = builtins.readFile ../config/bash/bashrc;
+    bashrcExtra = builtins.readFile ./config/bash/bashrc;
   };
 
   programs.neovim = {
@@ -93,7 +93,7 @@
     vimdiffAlias  = true;
     defaultEditor = true;
 
-    extraLuaConfig = builtins.readFile ../config/neovim/init.lua;
+    extraLuaConfig = builtins.readFile ./config/neovim/init.lua;
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       nvim-lspconfig
