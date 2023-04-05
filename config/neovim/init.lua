@@ -23,7 +23,7 @@ vim.opt.autoindent = true
 vim.opt.smarttab   = true
 vim.opt.ruler      = true
 
--- Colorscheme
+-- Colorscheme ----------------------------------------------------------------
 require('onedark').setup {
   style = 'warmer'
 }
@@ -31,16 +31,67 @@ require('onedark').setup {
 require('onedark').load()
 
 
--- indent lines
+-- Show indentation as lines --------------------------------------------------
 require('indent_blankline').setup {
   show_current_context = true,
   show_current_context_start = true,
 }
 
--- Lua
+-- LSP command shortcuts -----------------------------------------------------
+-- LSP diagnostic window key mappings
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+-- LSP specific key mappings, only work when an language server is attached
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
+
+-- Autocomplete setup ---------------------------------------------------------
+local cmp = require'cmp'
+
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+
+
+-- Lua ------------------------------------------------------------------------
 vim.api.nvim_create_autocmd(
   "FileType",
-  { pattern = "lua",
+  { 
+    pattern = "lua",
     callback = function()
       vim.opt.tabstop = 2
       vim.opt.shiftwidth = 2
@@ -48,10 +99,11 @@ vim.api.nvim_create_autocmd(
     end
 })
 
--- Nix
+-- Nix ------------------------------------------------------------------------
 vim.api.nvim_create_autocmd(
   "FileType",
-  { pattern = "nix",
+  { 
+    pattern = "nix",
     callback = function()
       vim.opt.tabstop = 2
       vim.opt.shiftwidth = 2
@@ -60,7 +112,7 @@ vim.api.nvim_create_autocmd(
 })
 
 
--- Go
+-- Go -------------------------------------------------------------------------
 vim.api.nvim_create_autocmd(
   "FileType",
   {
@@ -71,17 +123,14 @@ vim.api.nvim_create_autocmd(
       vim.opt.shiftwidth = 4
       vim.opt.expandtab = false
 
-      require('go').setup()
+      -- autocomplete and lsp server setup
+      local lsp = require('lspconfig')
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      lsp.gopls.setup {
+        capabilities = capabilities
+      }
+
     end
   }
 )
-
--- Autoformat go files on save
-local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-   require('go.format').goimport()
-  end,
-  group = format_sync_grp,
-})

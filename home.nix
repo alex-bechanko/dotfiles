@@ -101,7 +101,8 @@
       vim-nix
       onedark-nvim
       indent-blankline-nvim
-      go-nvim
+      nvim-cmp
+      cmp-nvim-lsp
     ];
   };
 
