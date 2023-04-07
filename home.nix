@@ -15,7 +15,16 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, ... }:
+  let
+    external-pkgs.nvimPlugins = {
+      nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "nvim-lspconfig"; 
+        src = inputs.nvim-lspconfig;
+      };
+    };
+
+  in {
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
@@ -27,15 +36,9 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
+      (final: prev: external-pkgs)
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -64,6 +67,7 @@
     bitwarden-cli
     beancount
     tree
+    sumneko-lua-language-server
   ];
 
   programs.home-manager.enable = true;
@@ -86,6 +90,11 @@
     bashrcExtra = builtins.readFile ./config/bash/bashrc;
   };
 
+  xdg.configFile.nvim = {
+    source = ./config/nvim;
+    recursive = true;
+  };
+
   programs.neovim = {
     enable        = true;
     viAlias       = true;
@@ -93,16 +102,16 @@
     vimdiffAlias  = true;
     defaultEditor = true;
 
-    extraLuaConfig = builtins.readFile ./config/neovim/init.lua;
     plugins = with pkgs.vimPlugins; [
-      nvim-treesitter.withAllGrammars
-      nvim-lspconfig
+      (nvim-treesitter.withPlugins (p: [p.nix p.lua p.go]))
+      pkgs.nvimPlugins.nvim-lspconfig
       plenary-nvim
       vim-nix
       onedark-nvim
       indent-blankline-nvim
       nvim-cmp
       cmp-nvim-lsp
+      luasnip
     ];
   };
 

@@ -25,6 +25,12 @@
   
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nvim-lspconfig = {
+      url = "github:neovim/nvim-lspconfig/v0.1.4";
+      flake = false;
+    };
+
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
