@@ -20,7 +20,7 @@
 
   inputs = {
     
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:nixos/nixpkgs-channels/nixos-unstable";
   
     home-manager.url = "github:nix-community/home-manager";
@@ -43,5 +43,9 @@
         modules = [ ./home.nix ];
       };
     };
+
+    inherit home-manager;
+    inherit (home-manager) packages;
   };
+
 }
