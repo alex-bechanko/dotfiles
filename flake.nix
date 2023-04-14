@@ -26,8 +26,34 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # neovim plugins
     nvim-lspconfig = {
-      url = "github:neovim/nvim-lspconfig/v0.1.4";
+      url = "github:neovim/nvim-lspconfig";
+      flake = false;
+    };
+
+    neodev-nvim = {
+      url = "github:folke/neodev.nvim";
+      flake = false;
+    };
+
+    lsp-zero = {
+      url = "github:VonHeikemen/lsp-zero.nvim/v2.x";
+      flake = false;
+    };
+
+    nvim-cmp = {
+      url = "github:hrsh7th/nvim-cmp";
+      flake = false;
+    };
+
+    cmp-nvim-lsp = {
+      url = "github:hrsh7th/cmp-nvim-lsp";
+      flake = false;
+    };
+
+    luasnip = {
+      url = "github:L3MON4D3/LuaSnip"; 
       flake = false;
     };
 

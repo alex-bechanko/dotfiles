@@ -17,10 +17,35 @@
 
 { inputs, lib, config, pkgs, ... }:
   let
+
     external-pkgs.nvimPlugins = {
       nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "nvim-lspconfig"; 
+        name = "nvim-lspconfig";
         src = inputs.nvim-lspconfig;
+      };
+      neodev-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "neodev.nvim";
+        src = inputs.neodev-nvim;
+      };
+
+      lsp-zero = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "lsp-zero";
+        src = inputs.lsp-zero;
+      };
+
+      nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "nvim-cmp";
+        src = inputs.nvim-cmp;
+      };
+
+      cmp-nvim-lsp = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "cmp-nvim-lsp";
+        src = inputs.cmp-nvim-lsp;
+      };
+      
+      luasnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "luasnip";
+        src = inputs.luasnip;
       };
     };
 
@@ -88,6 +113,9 @@
   programs.bash = {
     enable = true;
     bashrcExtra = builtins.readFile ./config/bash/bashrc;
+    shellAliases = {
+      home-manager = "home-manager --flake /home/alex/Projects/github.com/alex-bechanko/dotfiles#alex@tyr";
+    };
   };
 
   xdg.configFile.nvim = {
@@ -105,13 +133,15 @@
     plugins = with pkgs.vimPlugins; [
       (nvim-treesitter.withPlugins (p: [p.nix p.lua p.go]))
       pkgs.nvimPlugins.nvim-lspconfig
+      pkgs.nvimPlugins.lsp-zero
+      pkgs.nvimPlugins.nvim-cmp
+      pkgs.nvimPlugins.cmp-nvim-lsp
+      pkgs.nvimPlugins.luasnip
+      pkgs.nvimPlugins.neodev-nvim
       plenary-nvim
       vim-nix
       onedark-nvim
       indent-blankline-nvim
-      nvim-cmp
-      cmp-nvim-lsp
-      luasnip
     ];
   };
 
