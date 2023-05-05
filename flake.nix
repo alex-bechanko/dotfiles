@@ -57,6 +57,11 @@
       flake = false;
     };
 
+    cmp-luasnip = {
+      url = "github:saadparwaiz1/cmp_luasnip";
+      flake = false;
+    };
+
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {

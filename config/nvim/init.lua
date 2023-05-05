@@ -15,21 +15,45 @@
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
--- Global Options
-vim.opt.number     = true
+-- Global and Filetype options ------------------------------------------------
+vim.opt.number = true
 vim.opt.cursorline = true
-vim.opt.incsearch  = true
+vim.opt.incsearch = true
 vim.opt.autoindent = true
-vim.opt.smarttab   = true
-vim.opt.ruler      = true
+vim.opt.smarttab = true
+vim.opt.ruler = true
 
+local function filetype_go()
+  vim.opt.tabstop = 4
+  vim.opt.softtabstop = 4
+  vim.opt.shiftwidth = 4
+  vim.opt.expandtab = true
+end
+
+local function filetype_lua()
+  vim.opt.tabstop = 2
+  vim.opt.shiftwidth = 2
+  vim.opt.expandtab = true
+end
+
+local function filetype_nix()
+  vim.opt.tabstop = 2
+  vim.opt.shiftwidth = 2
+  vim.opt.expandtab = true
+end
+
+
+vim.api.nvim_create_autocmd('Filetype', { callback = filetype_go })
+vim.api.nvim_create_autocmd('Filetype', { callback = filetype_lua })
+vim.api.nvim_create_autocmd('Filetype', { callback = filetype_nix })
 
 -- Colorscheme ----------------------------------------------------------------
-require('onedark').setup({
+local color = require('onedark')
+color.setup({
   style = 'warmer'
-})
 
-require('onedark').load()
+})
+color.load()
 
 
 -- Show indentation as lines --------------------------------------------------
@@ -38,16 +62,19 @@ require('indent_blankline').setup({
   show_current_context_start = true,
 })
 
--- LSP setup ------------------------------------------------------------------
--- Enable Lua LSP, with neovim api docs and symbols
+
+-- Enable neovim configuraiton development ------------------------------------
 require('neodev').setup({
   override = function(root_dir, library)
     if string.match(root_dir, 'dotfiles') then
       library.enabled = true
       library.plugins = true
     end
-  end,
+  end
 })
+
+
+-- Enable LSP autocomplete with Go and Lua ------------------------------------
 
 local lsp = require('lsp-zero').preset({})
 
@@ -55,21 +82,11 @@ lsp.on_attach(function(_, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
 end)
 
-local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
-
-cmp.setup({
-  mapping = {
-    ['<Tab>'] = cmp_action.tab_complete(),
-    ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-  },
-})
-
 lsp.format_on_save({
   servers = {
     lua_ls = { 'lua' },
     gopls = { 'go' },
-  }
+  },
 })
 
 local lspconfig = require('lspconfig')
@@ -82,44 +99,18 @@ lspconfig.golangci_lint_ls.setup({
   capabilities = capabilities,
 })
 
+
 lsp.setup()
 
-
--- Lua ------------------------------------------------------------------------
-
-vim.api.nvim_create_autocmd(
-  "FileType", {
-    pattern = "lua",
-    callback = function()
-      vim.opt.tabstop = 2
-      vim.opt.shiftwidth = 2
-      vim.opt.expandtab = true
-    end
-  })
-
--- Nix ------------------------------------------------------------------------
-vim.api.nvim_create_autocmd(
-  "FileType",
-  {
-    pattern = "nix",
-    callback = function()
-      vim.opt.tabstop = 2
-      vim.opt.shiftwidth = 2
-      vim.opt.expandtab = true
-    end
-  })
-
-
--- Go -------------------------------------------------------------------------
-vim.api.nvim_create_autocmd(
-  "FileType",
-  {
-    pattern = "go",
-    callback = function()
-      vim.opt.tabstop = 4
-      vim.opt.softtabstop = 4
-      vim.opt.shiftwidth = 4
-      vim.opt.expandtab = false
-    end
-  }
-)
+local cmp_action = require('lsp-zero').cmp_action()
+local cmp = require('cmp')
+cmp.setup({
+  mapping = {
+    -- ['<Tab>'] = cmp_action.tab_complete(),
+    -- ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+    -- ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    ['<Tab>'] = cmp_action.luasnip_supertab(),
+    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+  },
+})

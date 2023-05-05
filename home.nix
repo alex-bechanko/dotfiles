@@ -47,6 +47,10 @@
         name = "luasnip";
         src = inputs.luasnip;
       };
+      cmp-luasnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "cmp-luasnip";
+        src = inputs.cmp-luasnip;
+      };
     };
 
   in {
@@ -93,6 +97,7 @@
     beancount
     tree
     sumneko-lua-language-server
+    ripgrep
   ];
 
   programs.home-manager.enable = true;
