@@ -51,6 +51,10 @@
         name = "cmp-luasnip";
         src = inputs.cmp-luasnip;
       };
+      which-key = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "which-key";
+        src = inputs.which-key;
+      };
     };
 
   in {
@@ -87,7 +91,7 @@
 
   xdg.enable = true;
 
-  home.file.".cobra.yaml".source = ./config/cobra-cli/cobra.yaml;
+  home.file.".cobra.yaml".source = ../config/cobra-cli/cobra.yaml;
 
   home.packages = with pkgs; [
     obsidian
@@ -117,14 +121,14 @@
 
   programs.bash = {
     enable = true;
-    bashrcExtra = builtins.readFile ./config/bash/bashrc;
+    bashrcExtra = builtins.readFile ../config/bash/bashrc;
     shellAliases = {
       home-manager = "home-manager --flake /home/alex/Projects/github.com/alex-bechanko/dotfiles#alex@tyr";
     };
   };
 
   xdg.configFile.nvim = {
-    source = ./config/nvim;
+    source = ../config/nvim;
     recursive = true;
   };
 
@@ -143,6 +147,7 @@
       pkgs.nvimPlugins.cmp-nvim-lsp
       pkgs.nvimPlugins.luasnip
       pkgs.nvimPlugins.neodev-nvim
+      pkgs.nvimPlugins.which-key
       plenary-nvim
       vim-nix
       onedark-nvim

@@ -62,6 +62,11 @@
       flake = false;
     };
 
+    which-key = {
+      url = "github:folke/which-key.nvim";
+      flake = false;
+    };
+
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
@@ -71,7 +76,7 @@
       "alex@tyr" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-        modules = [ ./home.nix ];
+        modules = [ ./home/tyr.nix ];
       };
     };
 

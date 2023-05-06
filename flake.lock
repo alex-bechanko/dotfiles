@@ -160,7 +160,8 @@
         "neodev-nvim": "neodev-nvim",
         "nixpkgs": "nixpkgs",
         "nvim-cmp": "nvim-cmp",
-        "nvim-lspconfig": "nvim-lspconfig"
+        "nvim-lspconfig": "nvim-lspconfig",
+        "which-key": "which-key"
       }
     },
     "utils": {
@@ -175,6 +176,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "which-key": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1683210030,
+        "narHash": "sha256-XoEpCdXSOeyPSQt8jtpp7gZk38tnUCHfiVuCJlw+z6Q=",
+        "owner": "folke",
+        "repo": "which-key.nvim",
+        "rev": "af8f26bfbb61b5f722c9fbc72b296dc9db0bcfdc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "which-key.nvim",
         "type": "github"
       }
     }
