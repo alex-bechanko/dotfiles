@@ -51,10 +51,6 @@
         name = "cmp-luasnip";
         src = inputs.cmp-luasnip;
       };
-      which-key = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "which-key";
-        src = inputs.which-key;
-      };
     };
 
   in {
@@ -91,7 +87,6 @@
 
   xdg.enable = true;
 
-  fonts.fontconfig.enable = true;
   home.file.".cobra.yaml".source = ../config/cobra-cli/cobra.yaml;
 
   home.packages = with pkgs; [
@@ -103,8 +98,6 @@
     tree
     sumneko-lua-language-server
     ripgrep
-    alacritty
-    (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
   ];
 
   programs.home-manager.enable = true;
@@ -126,7 +119,7 @@
     enable = true;
     bashrcExtra = builtins.readFile ../config/bash/bashrc;
     shellAliases = {
-      home-manager = "home-manager --flake /home/alex/Projects/github.com/alex-bechanko/dotfiles#alex@tyr";
+      home-manager = "home-manager --flake /home/alex/Projects/github.com/alex-bechanko/dotfiles#alex@odin";
     };
   };
 
@@ -150,7 +143,6 @@
       pkgs.nvimPlugins.cmp-nvim-lsp
       pkgs.nvimPlugins.luasnip
       pkgs.nvimPlugins.neodev-nvim
-      pkgs.nvimPlugins.which-key
       plenary-nvim
       vim-nix
       onedark-nvim
