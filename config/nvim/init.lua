@@ -16,63 +16,13 @@
 
 
 -- Global and Filetype options ------------------------------------------------
-vim.opt.number = true
-vim.opt.cursorline = true
-vim.opt.incsearch = true
-vim.opt.autoindent = true
-vim.opt.smarttab = true
-vim.opt.ruler = true
-
-local function filetype_go()
-  vim.opt.tabstop = 4
-  vim.opt.softtabstop = 4
-  vim.opt.shiftwidth = 4
-  vim.opt.expandtab = true
-end
-
-local function filetype_lua()
-  vim.opt.tabstop = 2
-  vim.opt.shiftwidth = 2
-  vim.opt.expandtab = true
-end
-
-local function filetype_nix()
-  vim.opt.tabstop = 2
-  vim.opt.shiftwidth = 2
-  vim.opt.expandtab = true
-end
-
-
-vim.api.nvim_create_autocmd('Filetype', { callback = filetype_go })
-vim.api.nvim_create_autocmd('Filetype', { callback = filetype_lua })
-vim.api.nvim_create_autocmd('Filetype', { callback = filetype_nix })
+require('options').setup()
 
 -- Colorscheme ----------------------------------------------------------------
-local color = require('onedark')
-color.setup({
-  style = 'warmer'
+require('colorscheme').setup()
 
-})
-color.load()
-
-
--- Show indentation as lines --------------------------------------------------
-require('indent_blankline').setup({
-  show_current_context = true,
-  show_current_context_start = true,
-})
-
-
--- Enable neovim configuraiton development ------------------------------------
-require('neodev').setup({
-  override = function(root_dir, library)
-    if string.match(root_dir, 'dotfiles') then
-      library.enabled = true
-      library.plugins = true
-    end
-  end
-})
-
+-- Plugins --------------------------------------------------------------------
+require('plugins').setup()
 
 -- Enable LSP autocomplete with Go and Lua ------------------------------------
 

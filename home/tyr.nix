@@ -91,6 +91,8 @@
 
   xdg.enable = true;
 
+  fonts.fontconfig.enable = true;
+
   home.file.".cobra.yaml".source = ../config/cobra-cli/cobra.yaml;
 
   home.packages = with pkgs; [
@@ -102,6 +104,8 @@
     tree
     sumneko-lua-language-server
     ripgrep
+    alacritty
+    (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
   ];
 
   programs.home-manager.enable = true;
