@@ -51,6 +51,10 @@
         name = "cmp-luasnip";
         src = inputs.cmp-luasnip;
       };
+      which-key = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "which-key";
+        src = inputs.which-key;
+      };
     };
 
 
