@@ -102,6 +102,7 @@
     beancount
     tree
     sumneko-lua-language-server
+    elmPackages.elm-language-server
     ripgrep
     alacritty
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })

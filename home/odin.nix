@@ -53,6 +53,7 @@
       };
     };
 
+
   in {
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -97,8 +98,13 @@
     beancount
     tree
     sumneko-lua-language-server
+    elmPackages.elm-language-server
     ripgrep
+
+    (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
   ];
+
+  fonts.fontconfig.enable = true;
 
   programs.home-manager.enable = true;
   programs.firefox.enable = true;
@@ -136,7 +142,7 @@
     defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
-      (nvim-treesitter.withPlugins (p: [p.nix p.lua p.go]))
+      (nvim-treesitter.withPlugins (p: [p.nix p.lua p.go p.elm]))
       pkgs.nvimPlugins.nvim-lspconfig
       pkgs.nvimPlugins.lsp-zero
       pkgs.nvimPlugins.nvim-cmp

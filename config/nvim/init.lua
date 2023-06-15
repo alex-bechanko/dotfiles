@@ -36,6 +36,7 @@ lsp.format_on_save({
   servers = {
     lua_ls = { 'lua' },
     gopls = { 'go' },
+    elmls = { 'elm' },
   },
 })
 
@@ -46,6 +47,9 @@ lspconfig.gopls.setup({
   capabilities = capabilities,
 })
 lspconfig.golangci_lint_ls.setup({
+  capabilities = capabilities,
+})
+lspconfig.elmls.setup({
   capabilities = capabilities,
 })
 
