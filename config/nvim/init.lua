@@ -21,6 +21,7 @@ local neodev = require('neodev')
 local whichkey = require('which-key')
 local lspzero = require('lsp-zero')
 local lspconfig = require('lspconfig')
+local cmp = require('cmp')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local rust_tools = require('rust-tools')
 
@@ -34,6 +35,7 @@ vim.opt.smarttab = true
 vim.opt.ruler = true
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
+
 
 -- I like either 4 spaces or 2 spaces for tabbing
 -- in a language. These two functions are used to give languages
@@ -161,3 +163,24 @@ lspconfig.dhall_lsp_server.setup({
 })
 
 lsp.setup()
+
+local function select_or_fallback(select_func, select_opts, modes)
+  return cmp.mapping(function(fallback)
+    if cmp.visible() then
+      select_func(select_opts)
+    else
+      fallback()
+    end
+  end, modes)
+end
+
+cmp.setup({
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = select_or_fallback(cmp.select_next_item, { behavior = 'select' }, { 'i', 's' }),
+    ['<S-Tab>'] = select_or_fallback(cmp.select_prev_item, { behavior = 'select' }, { 'i', 's' }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }
+})
