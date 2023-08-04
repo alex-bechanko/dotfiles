@@ -59,6 +59,7 @@
     beancount
     tree
     ripgrep
+    gnumake
 
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
   ];
