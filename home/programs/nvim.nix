@@ -17,6 +17,11 @@
 
 { inputs, lib, config, pkgs, ... }:
   let
+    buildNeovimPluginFrom2Nix = name: pkgs.vimUtils.buildVimPluginFrom2Nix {
+      name = name;
+      src = inputs.${name};
+    };
+
     external-pkgs.nvimPlugins = {
       nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
         name = "nvim-lspconfig";
@@ -55,6 +60,11 @@
       which-key = pkgs.vimUtils.buildVimPluginFrom2Nix {
         name = "which-key";
         src = inputs.which-key;
+      };
+
+      rust-tools = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "rust-tools.nvim";
+        src = inputs.rust-tools;
       };
     };
   in {
@@ -95,7 +105,7 @@
     defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
-      (nvim-treesitter.withPlugins (p: [p.nix p.lua p.go p.elm]))
+      nvim-treesitter.withAllGrammars
       pkgs.nvimPlugins.nvim-lspconfig
       pkgs.nvimPlugins.lsp-zero
       pkgs.nvimPlugins.nvim-cmp
@@ -103,10 +113,13 @@
       pkgs.nvimPlugins.luasnip
       pkgs.nvimPlugins.neodev-nvim
       pkgs.nvimPlugins.which-key
+      pkgs.nvimPlugins.rust-tools
       plenary-nvim
       vim-nix
       onedark-nvim
+      catppuccin-nvim
       indent-blankline-nvim
+      dhall-vim
     ];
   };
 
