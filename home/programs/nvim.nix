@@ -27,15 +27,6 @@
         name = "nvim-lspconfig";
         src = inputs.nvim-lspconfig;
       };
-      neodev-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "neodev.nvim";
-        src = inputs.neodev-nvim;
-      };
-
-      lsp-zero = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "lsp-zero";
-        src = inputs.lsp-zero;
-      };
 
       nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
         name = "nvim-cmp";
@@ -107,19 +98,15 @@
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       pkgs.nvimPlugins.nvim-lspconfig
-      pkgs.nvimPlugins.lsp-zero
       pkgs.nvimPlugins.nvim-cmp
       pkgs.nvimPlugins.cmp-nvim-lsp
       pkgs.nvimPlugins.luasnip
-      pkgs.nvimPlugins.neodev-nvim
       pkgs.nvimPlugins.which-key
       pkgs.nvimPlugins.rust-tools
       plenary-nvim
-      vim-nix
+      nvim-dap
       onedark-nvim
       catppuccin-nvim
-      indent-blankline-nvim
-      dhall-vim
     ];
   };
 

@@ -14,8 +14,29 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-require('config.color')
-require('config.options')
-require('config.lsp')
-require('config.cmp')
-require('config.plugins')
+local M = {}
+M.lspconfig = {
+    server = 'lua_ls',
+    config = {
+        settings = {
+            Lua = {
+                runtime = {
+                    version = 'LuaJIT',
+                },
+                diagnostics = {
+                    globals = { 'vim' },
+                },
+                workspace = {
+                    library = vim.api.nvim_get_runtime_file('', true),
+                    checkThirdParty = false,
+                },
+                telemetry = {
+                    enable = false,
+                },
+            },
+        },
+    },
+}
+
+
+return M

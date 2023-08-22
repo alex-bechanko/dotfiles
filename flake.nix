@@ -21,7 +21,6 @@
   inputs = {
     
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs-channels/nixos-unstable";
   
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -29,16 +28,6 @@
     # neovim plugins
     nvim-lspconfig = {
       url = "github:neovim/nvim-lspconfig";
-      flake = false;
-    };
-
-    neodev-nvim = {
-      url = "github:folke/neodev.nvim";
-      flake = false;
-    };
-
-    lsp-zero = {
-      url = "github:VonHeikemen/lsp-zero.nvim/v2.x";
       flake = false;
     };
 
@@ -71,6 +60,7 @@
       url = "github:simrat39/rust-tools.nvim";
       flake = false;
     };
+
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {

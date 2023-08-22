@@ -14,8 +14,4 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-require('config.color')
-require('config.options')
-require('config.lsp')
-require('config.cmp')
-require('config.plugins')
+require('config.plugins.rust-tools').setup()

@@ -14,8 +14,18 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-require('config.color')
-require('config.options')
-require('config.lsp')
-require('config.cmp')
-require('config.plugins')
+local cmp = require('cmp')
+
+local M = {}
+
+M.mapping = function ()
+    return cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    })
+end
+
+return M

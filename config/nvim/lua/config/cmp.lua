@@ -14,8 +14,17 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-require('config.color')
-require('config.options')
-require('config.lsp')
-require('config.cmp')
-require('config.plugins')
+local cmp = require('cmp')
+
+local keymaps = require('config.keymaps')
+
+cmp.setup({
+    snippet = {
+        expand = function(args) require('luasnip').lsp_expand(args.body) end,
+    },
+    mapping = keymaps.cmp.mapping(),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+    }, { { name = 'buffer' } }),
+})

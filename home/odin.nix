@@ -60,6 +60,7 @@
     tree
     ripgrep
     gnumake
+    unzip
 
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
   ];

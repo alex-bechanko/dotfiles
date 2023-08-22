@@ -61,6 +61,7 @@
     tree
     ripgrep
     alacritty
+    unzip
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
   ];
 
