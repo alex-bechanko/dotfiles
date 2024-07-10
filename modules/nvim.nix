@@ -15,50 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-{ inputs, lib, config, pkgs, ... }:
-  let
-    buildNeovimPluginFrom2Nix = name: pkgs.vimUtils.buildVimPluginFrom2Nix {
-      name = name;
-      src = inputs.${name};
-    };
-
-    external-pkgs.nvimPlugins = {
-      nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "nvim-lspconfig";
-        src = inputs.nvim-lspconfig;
-      };
-
-      nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "nvim-cmp";
-        src = inputs.nvim-cmp;
-      };
-
-      cmp-nvim-lsp = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "cmp-nvim-lsp";
-        src = inputs.cmp-nvim-lsp;
-      };
-      
-      luasnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "luasnip";
-        src = inputs.luasnip;
-      };
-
-      cmp-luasnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "cmp-luasnip";
-        src = inputs.cmp-luasnip;
-      };
-
-      which-key = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "which-key";
-        src = inputs.which-key;
-      };
-
-      rust-tools = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        name = "rust-tools.nvim";
-        src = inputs.rust-tools;
-      };
-    };
-  in {
+{ inputs, lib, config, pkgs, ... }: {
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
@@ -70,7 +27,6 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      (final: prev: external-pkgs)
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
     ];
@@ -86,6 +42,9 @@
   home.packages = with pkgs; [
     sumneko-lua-language-server
     elmPackages.elm-language-server
+    nil
+    gopls
+    rust-analyzer
   ];
 
   programs.neovim = {
@@ -97,12 +56,11 @@
 
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
-      pkgs.nvimPlugins.nvim-lspconfig
-      pkgs.nvimPlugins.nvim-cmp
-      pkgs.nvimPlugins.cmp-nvim-lsp
-      pkgs.nvimPlugins.luasnip
-      pkgs.nvimPlugins.which-key
-      pkgs.nvimPlugins.rust-tools
+      nvim-lspconfig
+      nvim-cmp
+      cmp-nvim-lsp
+      luasnip
+      which-key-nvim
       plenary-nvim
       nvim-dap
       onedark-nvim
@@ -110,4 +68,8 @@
     ];
   };
 
+  xdg.configFile.nvim = {
+    source = ../config/nvim;
+    recursive = true;
+  };
 }

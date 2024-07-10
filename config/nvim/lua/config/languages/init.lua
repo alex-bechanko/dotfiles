@@ -17,4 +17,5 @@
 return {
     lua  = require('config.languages.lua'),
     go   = require('config.languages.go'),
+    nix  = require('config.languages.nix'),
 }

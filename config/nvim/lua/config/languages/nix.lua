@@ -14,13 +14,10 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 local M = {}
-
-M.opts = {}
-
-M.setup = function()
-    require('rust-tools').setup(M.opts)
-end
+M.lspconfig = {
+    server = 'nil_ls',
+    config = {},
+}
 
 return M

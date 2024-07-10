@@ -21,55 +21,20 @@
   inputs = {
     
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
   
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # neovim plugins
-    nvim-lspconfig = {
-      url = "github:neovim/nvim-lspconfig";
-      flake = false;
-    };
-
-    nvim-cmp = {
-      url = "github:hrsh7th/nvim-cmp";
-      flake = false;
-    };
-
-    cmp-nvim-lsp = {
-      url = "github:hrsh7th/cmp-nvim-lsp";
-      flake = false;
-    };
-
-    luasnip = {
-      url = "github:L3MON4D3/LuaSnip"; 
-      flake = false;
-    };
-
-    cmp-luasnip = {
-      url = "github:saadparwaiz1/cmp_luasnip";
-      flake = false;
-    };
-
-    which-key = {
-      url = "github:folke/which-key.nvim";
-      flake = false;
-    };
-
-    rust-tools = {
-      url = "github:simrat39/rust-tools.nvim";
-      flake = false;
-    };
-
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
+  outputs = { nixpkgs, nixpkgs-24-05, home-manager, ... }@inputs: {
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       "alex@tyr" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs.pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
         modules = [ ./home/tyr.nix ];
       };
       "alex@odin" = home-manager.lib.homeManagerConfiguration {
