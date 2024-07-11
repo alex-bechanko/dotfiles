@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-{lib, config, pkgs, pkgs-stable, ... }: {
+{ pkgs, pkgs-stable, ... }: {
   imports = [
     ../modules/nvim.nix
     ../modules/bash.nix
@@ -57,6 +57,5 @@
   programs.firefox.enable = true;
   programs.htop.enable    = true;
 
-  # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }
