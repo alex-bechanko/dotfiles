@@ -34,17 +34,29 @@
     homeConfigurations = {
       "alex@tyr" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs.pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {
+          pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
+          host = "tyr";
+          user = "alex";
+        };
         modules = [ ./home/tyr.nix ];
       };
       "alex@odin" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {
+          pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
+          host = "odin";
+          user = "alex";
+        };
         modules = [ ./home/odin.nix ];
       };
       "alex@magni" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {
+          pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
+          host = "magni";
+          user = "alex";
+        };
         modules = [ ./home/magni.nix ];
       };
     };

@@ -14,12 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-{...}: {
+{user, host, ...}: {
   programs.bash = {
     enable = true;
     bashrcExtra = builtins.readFile ../config/bash/bashrc;
     shellAliases = {
-      home-manager = "home-manager --flake /home/alex/Projects/github.com/alex-bechanko/dotfiles#alex@tyr";
+      home-manager = "home-manager --flake /home/alex/Projects/github.com/alex-bechanko/dotfiles#${user}@${host}";
       diff = "diff --color -u";
     };
   };
