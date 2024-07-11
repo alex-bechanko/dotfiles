@@ -21,4 +21,4 @@ require('config.options.nix')
 require('config.lsp')
 require('config.autocomplete')
 
-require('ibl').setup()
+require('mini.indentscope').setup()

@@ -57,8 +57,8 @@
     plugins = with pkgs.vimPlugins; [
       catppuccin-nvim
       cmp-nvim-lsp
-      indent-blankline-nvim
       luasnip
+      mini-nvim
       nvim-cmp
       nvim-dap
       nvim-lspconfig
