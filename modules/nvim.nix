@@ -40,11 +40,11 @@
   };
 
   home.packages = with pkgs; [
-    sumneko-lua-language-server
     elmPackages.elm-language-server
-    nil
     gopls
+    nil
     rust-analyzer
+    sumneko-lua-language-server
   ];
 
   programs.neovim = {
@@ -55,16 +55,17 @@
     defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
-      nvim-treesitter.withAllGrammars
-      nvim-lspconfig
-      nvim-cmp
-      cmp-nvim-lsp
-      luasnip
-      which-key-nvim
-      plenary-nvim
-      nvim-dap
-      onedark-nvim
       catppuccin-nvim
+      cmp-nvim-lsp
+      indent-blankline-nvim
+      luasnip
+      nvim-cmp
+      nvim-dap
+      nvim-lspconfig
+      nvim-treesitter.withAllGrammars
+      onedark-nvim
+      plenary-nvim
+      which-key-nvim
     ];
   };
 

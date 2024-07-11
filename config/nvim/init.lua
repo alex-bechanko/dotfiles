@@ -15,6 +15,10 @@
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 require('config.color')
-require('config.options')
+require('config.options.default')
+require('config.options.lua')
+require('config.options.nix')
 require('config.lsp')
-require('config.cmp')
+require('config.autocomplete')
+
+require('ibl').setup()

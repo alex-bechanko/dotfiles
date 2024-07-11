@@ -14,17 +14,12 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-local cmp = require('cmp')
-
-local keymaps = require('config.keymaps')
-
-cmp.setup({
-    snippet = {
-        expand = function(args) require('luasnip').lsp_expand(args.body) end,
-    },
-    mapping = keymaps.cmp.mapping(),
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-    }, { { name = 'buffer' } }),
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'nix' },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = -1
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.expandtab = true
+  end
 })
