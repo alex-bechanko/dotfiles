@@ -44,6 +44,9 @@
     packages = with pkgs; [
       pkgs-stable.bitwarden
       discord
+      go
+      go-task
+      golangci-lint
       (nerdfonts.override { fonts = [ "Inconsolata" ]; })
       obsidian
       ripgrep
