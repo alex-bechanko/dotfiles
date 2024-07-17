@@ -51,7 +51,7 @@
       "alex@magni" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          config_id = "alex@odin";
+          config_id = "alex@magni";
           pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
         };
         modules = [ ./home/magni.nix ];
