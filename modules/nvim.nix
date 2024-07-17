@@ -45,6 +45,8 @@
     nil
     rust-analyzer
     sumneko-lua-language-server
+    dhall-lsp-server
+    luajit
   ];
 
   programs.neovim = {
@@ -57,6 +59,7 @@
     plugins = with pkgs.vimPlugins; [
       catppuccin-nvim
       cmp-nvim-lsp
+      dhall-vim
       luasnip
       mini-nvim
       nvim-cmp
