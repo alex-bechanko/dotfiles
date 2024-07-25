@@ -130,3 +130,6 @@ if ! shopt -oq posix; then
 fi
 
 #eval "$(direnv hook bash)"
+
+export GOPRIVATE="gitlab.com/everactive"
+export PATH="$HOME/go/bin:$PATH"

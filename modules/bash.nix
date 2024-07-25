@@ -21,6 +21,7 @@
     shellAliases = {
       home-manager = "home-manager --flake /home/alex/Projects/github.com/alex-bechanko/dotfiles#${config_id}";
       diff = "diff --color -u";
+      grep = "grep -Hn";
     };
   };
 

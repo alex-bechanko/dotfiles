@@ -45,13 +45,20 @@
       pkgs-stable.bitwarden
       discord
       go
+      go-mockery
       go-task
       golangci-lint
+      natscli
       (nerdfonts.override { fonts = [ "Inconsolata" ]; })
       obsidian
+      _1password
+      _1password-gui
       ripgrep
+      slack
       tree
       unzip
+      xh
+      yq
     ];
   };
 
