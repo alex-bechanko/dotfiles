@@ -52,6 +52,14 @@ lspconfig.lua_ls.setup({
 -- dhall
 lspconfig.dhall_lsp_server.setup({})
 
+-- rust
+lspconfig.rust_analyzer.setup({
+  on_init = function (client)
+    -- fixes issue with rust-analyzer complaining about line offsets when typing in characters
+    client.offset_encoding = "utf-8"
+  end,
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(args)
