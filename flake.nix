@@ -58,6 +58,13 @@
       };
     };
 
+    nixosConfigurations = {
+      "tyr" = nixpkgs.lib.nixosSystem {
+        system = "x86_64";
+        modules = [ ./system/tyr.nix ];
+      };
+    };
+
     inherit home-manager;
     inherit (home-manager) packages;
   };
