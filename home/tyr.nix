@@ -39,8 +39,10 @@
     stateVersion = "22.11";
     file.".cobra.yaml".source = ../config/cobra-cli/cobra.yaml;
     packages = with pkgs; [
+      alacritty
       pkgs-stable.bitwarden
       discord
+      lazygit
       (nerdfonts.override { fonts = [ "Inconsolata" ]; })
       obsidian
       ripgrep
