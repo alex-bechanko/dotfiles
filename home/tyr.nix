@@ -17,6 +17,7 @@
 
 { pkgs, pkgs-stable, ... }: {
   imports = [
+    ../modules/alacritty.nix
     ../modules/nvim.nix
     ../modules/bash.nix
     ../modules/git.nix
@@ -39,7 +40,6 @@
     stateVersion = "22.11";
     file.".cobra.yaml".source = ../config/cobra-cli/cobra.yaml;
     packages = with pkgs; [
-      alacritty
       pkgs-stable.bitwarden
       discord
       lazygit
