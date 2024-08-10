@@ -22,6 +22,7 @@
     ../modules/bash.nix
     ../modules/git.nix
     ../modules/direnv.nix
+    ../modules/zellij.nix
   ];
 
   nixpkgs = {
