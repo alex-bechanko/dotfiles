@@ -19,6 +19,7 @@
     enable = true;
     settings = {
       window.startup_mode = "Maximized";
+      window.decorations = "None";
       font.size = 10.0;
       font.bold.family = "Inconsolata";
       font.bold.style = "Bold";
