@@ -1,5 +1,5 @@
 # Dotfiles and configurations for my machines.
-# Copyright (C) 2023 Alex Bechanko
+# Copyright (C) 2024 Alex Bechanko
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,14 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-{ lib, pkgs, pkgs-stable, ... }: {
-  imports = [
-    ../modules/nvim.nix
-    ../modules/bash.nix
-    ../modules/git.nix
-    ../modules/direnv.nix
-    
-  ];
+
+{ username, hostname, pkgs, ... }: {
+  imports = [];
+
   nixpkgs = {
     overlays = [];
     config = {
@@ -32,43 +28,27 @@
 
   targets.genericLinux.enable = true;
 
-  systemd.user.startServices = "sd-switch";
-
-  fonts.fontconfig.enable = true;
-
   home = {
-    username = "alex";
-    homeDirectory = "/home/alex";
+    inherit username;
+    homeDirectory = "/home/${username}";
     stateVersion = "22.11";
     file.".cobra.yaml".source = ../config/cobra-cli/cobra.yaml;
     packages = with pkgs; [
-      pkgs-stable.bitwarden
-      discord
-      go
-      go-mockery
-      go-task
-      golangci-lint
-      natscli
+      gnumake
       (nerdfonts.override { fonts = [ "Inconsolata" ]; })
-      obsidian
-      _1password
-      _1password-gui
-      ripgrep
-      slack
       tree
+      ripgrep
       unzip
-      xh
-      yq
     ];
   };
 
   xdg.enable = true;
 
+  fonts.fontconfig.enable = true;
 
-  programs = {
-    git.userEmail = lib.mkForce "alex.bechanko@everactive.com";
-    home-manager.enable = true;
-    htop.enable = true;
-  };
+  programs.home-manager.enable = true;
+  programs.firefox.enable = true;
+  programs.htop.enable    = true;
+
+  systemd.user.startServices = "sd-switch";
 }
-

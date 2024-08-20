@@ -15,16 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-{ pkgs, pkgs-stable, ... }: {
-  imports = [
-    ../modules/alacritty.nix
-    ../modules/nvim.nix
-    ../modules/bash.nix
-    ../modules/git.nix
-    ../modules/direnv.nix
-    ../modules/zellij.nix
-  ];
-
+{ username, pkgs, pkgs-stable, ... }: {
   nixpkgs = {
     overlays = [];
     config = {
@@ -36,10 +27,10 @@
   targets.genericLinux.enable = true;
 
   home = {
-    username = "alex";
-    homeDirectory = "/home/alex";
+    inherit username;
+    homeDirectory = "/home/${username}";
     stateVersion = "22.11";
-    file.".cobra.yaml".source = ../config/cobra-cli/cobra.yaml;
+    file.".cobra.yaml".source = ../../config/cobra-cli/cobra.yaml;
     packages = with pkgs; [
       pkgs-stable.bitwarden
       discord
