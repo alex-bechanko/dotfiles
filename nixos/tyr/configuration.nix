@@ -73,6 +73,8 @@
     #media-session.enable = true;
   };
 
+  services.tailscale.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -81,10 +83,12 @@
     isNormalUser = true;
     description = "alex";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
+  };
+
+  users.users.everactive = {
+    isNormalUser = true;
+    description = "everactive";
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
   # Install firefox.
