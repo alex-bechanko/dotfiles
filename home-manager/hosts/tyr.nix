@@ -37,7 +37,7 @@
       discord
       jq
       lazygit
-      (nerdfonts.override { fonts = [ "Inconsolata" ]; })
+      (nerdfonts.override { fonts = [ "Inconsolata" "Iosevka" "IosevkaTerm" ]; })
       obsidian
       ripgrep
       tree
