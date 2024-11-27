@@ -47,6 +47,7 @@
     sumneko-lua-language-server
     dhall-lsp-server
     luajit
+    glas
   ];
 
   programs.neovim = {
@@ -66,6 +67,7 @@
       nvim-dap
       nvim-lspconfig
       nvim-treesitter.withAllGrammars
+      nvim-treesitter-parsers.gleam
       onedark-nvim
       plenary-nvim
       which-key-nvim
