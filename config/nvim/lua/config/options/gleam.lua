@@ -14,12 +14,12 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-require('config.color')
-require('config.options.default')
-require('config.options.lua')
-require('config.options.nix')
-require('config.options.gleam')
-require('config.lsp')
-require('config.autocomplete')
-
-require('mini.indentscope').setup()
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'gleam' },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = -1
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.expandtab = true
+  end
+})
