@@ -27,3 +27,11 @@ catppuccin.setup({
 })
 vim.cmd.colorscheme('catppuccin')
 vim.cmd.highlight({ 'link', 'LspInlayHint', 'Comment', bang = true })
+
+require('nvim-treesitter.configs').setup({
+  auto_install = false,
+  highlight = {
+    enable = true,
+  },
+  additional_vim_regex_highlighting = false,
+})
