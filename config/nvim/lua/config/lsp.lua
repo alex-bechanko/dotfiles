@@ -53,7 +53,15 @@ lspconfig.lua_ls.setup({
 lspconfig.dhall_lsp_server.setup({})
 
 -- rust
-lspconfig.rust_analyzer.setup({})
+lspconfig.rust_analyzer.setup({
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false,
+      },
+    },
+  },
+})
 
 -- gleam
 lspconfig.gleam.setup({})

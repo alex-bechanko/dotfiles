@@ -43,7 +43,8 @@
     elmPackages.elm-language-server
     gopls
     nil
-    rust-analyzer
+    gcc
+    rustup
     sumneko-lua-language-server
     dhall-lsp-server
     luajit

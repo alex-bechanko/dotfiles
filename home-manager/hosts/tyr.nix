@@ -34,6 +34,7 @@
     packages = with pkgs; [
       bind
       pkgs-stable.bitwarden
+      cargo-flamegraph
       discord
       jq
       lazygit
@@ -42,6 +43,8 @@
       ripgrep
       tree
       unzip
+      nodePackages.prettier
+      glow
     ];
   };
 
