@@ -15,11 +15,22 @@
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 require('config.color')
-require('config.options.default')
-require('config.options.lua')
-require('config.options.nix')
-require('config.options.gleam')
-require('config.lsp')
-require('config.autocomplete')
+require('config.default')
 
+-- due to how lsp configuration works, it's necessary to pass these
+-- modules to the lsp setup to be used when the lsp attaches
+local languages = {
+  dhall = require('config.filetype.dhall'),
+  gleam = require('config.filetype.gleam'),
+  go = require('config.filetype.go'),
+  lua = require('config.filetype.lua'),
+  nix = require('config.filetype.nix'),
+  rust = require('config.filetype.rust'),
+}
+for _, language_module in pairs(languages) do
+  language_module.setup()
+end
+
+require('config.lsp').setup(languages)
+require('config.autocomplete')
 require('mini.indentscope').setup()

@@ -32,7 +32,7 @@ vim.opt.signcolumn = 'yes'
 
 vim.opt.wrap = false
 vim.opt.textwidth = 120
-
+vim.opt.colorcolumn = -2
 
 -- highlight matching braces
 vim.opt.showmatch = true
@@ -66,13 +66,3 @@ vim.opt.wildignorecase = true
 
 -- use visual (not audio) bell
 vim.opt.visualbell = true
-
--- folding
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.opt.foldtext = ''
-vim.opt.foldcolumn = '1'
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 0
-vim.opt.foldnestmax = 4
-vim.opt.foldenable = true
