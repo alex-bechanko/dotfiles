@@ -20,41 +20,7 @@ function M.setup()
   lspconfig.dhall_lsp_server.setup({})
 end
 
-function M.lsp_attach(args)
-    local set = vim.keymap.set
-    -- local client = vim.lsp.get_client_by_id(args.data.client_id)
-    local buffer = args.buf
-
-    set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostics' })
-    set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Goto previous diagnostic' })
-    set('n', ']d', vim.diagnostic.goto_next, { desc = 'Goto next diagnostic' })
-    set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Add position to diagnostics' })
-
-    set('n', 'K', vim.lsp.buf.hover, { buffer = buffer, desc = 'Display information about symbol under cursor' })
-    set('n', 'gd', vim.lsp.buf.definition,
-      { buffer = buffer, desc = 'Jump to definition of symbol under cursor' })
-    set('n', 'gD', vim.lsp.buf.declaration,
-      { buffer = buffer, desc = 'Jump to declaration of symbol under cursor' })
-    set('n', 'gi', vim.lsp.buf.implementation,
-      { buffer = buffer, desc = 'List implementations of symbol under cursor' })
-    set('n', 'go', vim.lsp.buf.type_definition,
-      { buffer = buffer, desc = 'Jump to type definition of symbol under cursor' })
-    set('n', 'gr', vim.lsp.buf.references, { buffer = buffer, desc = 'List references to symbol under cursor' })
-    set('n', 'gs', vim.lsp.buf.signature_help,
-      { buffer = buffer, desc = 'Show signature for symbol under cursor' })
-    set('n', 'gl', vim.diagnostic.open_float, { buffer = buffer, desc = 'Show diagnostics' })
-    set('n', '[d', vim.diagnostic.goto_prev, { buffer = buffer, desc = 'Goto previous diagnostic' })
-    set('n', ']d', vim.diagnostic.goto_next, { buffer = buffer, desc = 'Goto next diagnostic' })
-
-    local format = function() vim.lsp.buf.format({ async = true }) end
-
-    set('n', '<F2>', vim.lsp.buf.rename, { buffer = buffer, desc = 'Rename references to symbol under cursor' })
-    set('n', '<F3>', format, { buffer = buffer, desc = 'Format buffer/selection with attached LSPs' })
-    set('x', '<F3>', format, { buffer = buffer, desc = 'Format buffer/selection with attached LSPs' })
-    set('n', '<F4>', vim.lsp.buf.code_action, { buffer = buffer, desc = 'Select code action at cursor position' })
-    set('x', '<F4>', vim.lsp.buf.code_action, { buffer = buffer, desc = 'Select code action at cursor position' })
-end
-
+M.lsp_attach = require('config.lsp').default_lsp_attach
 M.lsp = 'dhall_lsp_server'
 
 return M

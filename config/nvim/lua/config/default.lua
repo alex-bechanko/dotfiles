@@ -14,55 +14,59 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-vim.opt_global.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.go.completeopt = 'menu,menuone,noselect'
 
 -- make diff mode always open in vertical split
-vim.opt_global.diffopt:append({ 'vertical' })
+-- the other options being set are the defaults
+-- it's a pain that there isn't a way to append an option 
+vim.go.diffopt = 'internal,filler,closeoff,vertical'
 
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[\]]
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.wo.number = true
+vim.wo.relativenumber = true
 
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
-vim.opt.signcolumn = 'yes'
+vim.wo.signcolumn = 'yes'
 
-vim.opt.wrap = false
-vim.opt.textwidth = 120
-vim.opt.colorcolumn = '-2'
+vim.wo.wrap = false
+vim.bo.textwidth = 120
+vim.wo.colorcolumn = '-2'
 
 -- highlight matching braces
-vim.opt.showmatch = true
+vim.o.showmatch = true
 
-vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
-vim.opt.ruler = true
+vim.wo.cursorline = true
+vim.wo.cursorcolumn = true
+vim.o.ruler = true
 
-vim.opt.incsearch = true
+vim.o.incsearch = true
+vim.o.timeout = true
+vim.o.timeoutlen = 500
+vim.o.updatetime = 100
 
-vim.opt.timeout = true
-vim.opt.timeoutlen = 500
-vim.opt.updatetime = 100
+vim.bo.tabstop = 4
+vim.bo.softtabstop = -1
+vim.bo.shiftwidth = 4
+vim.bo.expandtab = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = -1
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
-vim.opt.autoindent = true
-vim.opt.smarttab = true
+vim.bo.autoindent = true
+vim.o.smarttab = true
 
 -- enable case-insensitive search
-vim.opt.ignorecase = true
+vim.o.ignorecase = true
 -- ... unless if we don't want that and put a capital letter in the search
-vim.opt.smartcase = true
+vim.o.smartcase = true
 
 -- case insensitive auto completion
-vim.opt.wildignorecase = true
+vim.o.wildignorecase = true
 
 
 -- use visual (not audio) bell
-vim.opt.visualbell = true
+vim.o.visualbell = true
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Telescope help tags"})
