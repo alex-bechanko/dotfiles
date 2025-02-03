@@ -32,7 +32,7 @@ vim.opt.signcolumn = 'yes'
 
 vim.opt.wrap = false
 vim.opt.textwidth = 120
-vim.opt.colorcolumn = -2
+vim.opt.colorcolumn = '-2'
 
 -- highlight matching braces
 vim.opt.showmatch = true
