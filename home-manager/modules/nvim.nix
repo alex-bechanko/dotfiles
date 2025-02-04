@@ -69,6 +69,7 @@
       nvim-lspconfig
       nvim-treesitter.withAllGrammars
       nvim-treesitter-parsers.gleam
+      nvim-ufo
       onedark-nvim
       plenary-nvim
       telescope-nvim

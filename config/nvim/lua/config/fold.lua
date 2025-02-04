@@ -16,34 +16,19 @@
 local M = {}
 
 function M.default_folding()
-  -- use treesitter for folding
-  vim.wo.foldmethod = 'expr'
-  vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+  vim.o.foldcolumn = '0'
+  vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+  vim.o.foldlevel = 99
+  vim.o.foldlevelstart = 99
+  vim.o.foldenable = true
 
-  -- no fold column
-  vim.wo.foldcolumn = '0'
+  local ufo = require('ufo')
+  vim.keymap.set('n', 'zR', ufo.openAllFolds)
+  vim.keymap.set('n', 'zM', ufo.closeAllFolds)
 
-  vim.wo.foldnestmax = 4
-  vim.wo.foldenable = true
-
-  -- disable automatic folding when in insert mode
-  -- keeping it on means that folds will fold/unfold as you type
-  -- which is incredibly irritating
-  vim.api.nvim_create_augroup("fold_settings", { clear = true })
-  vim.api.nvim_create_autocmd("InsertEnter", {
-    group = "fold_settings",
-    callback = function()
-      vim.b.current_foldmethod = vim.wo.foldmethod
-      vim.wo.foldmethod = "manual"
-    end
-  })
-  vim.api.nvim_create_autocmd("InsertLeave", {
-    group = "fold_settings",
-    callback = function()
-      if vim.b.current_foldmethod then
-        vim.wo.foldmethod = vim.b.current_foldmethod
-        vim.b.current_foldmethod = nil
-      end
+  ufo.setup({
+    provider_selector = function()
+      return { 'treesitter', 'indent' }
     end
   })
 end
