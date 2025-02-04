@@ -24,7 +24,7 @@ function M.setup()
       vim.bo.shiftwidth = 2
       vim.bo.expandtab = true
 
-      require('config.fold').enable_folding()
+      require('config.fold').default_folding()
     end
   })
 

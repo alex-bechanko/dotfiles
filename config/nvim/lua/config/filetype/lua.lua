@@ -25,7 +25,7 @@ function M.setup()
       vim.opt_local.shiftwidth = 2
       vim.opt_local.expandtab = true
 
-      require('config.fold').enable_folding()
+      require('config.fold').default_folding()
     end
   })
 

@@ -15,7 +15,7 @@
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 local M = {}
 
-function M.enable_folding()
+function M.default_folding()
   -- use treesitter for folding
   vim.wo.foldmethod = 'expr'
   vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'

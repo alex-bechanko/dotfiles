@@ -24,15 +24,7 @@ function M.setup()
       vim.opt_local.shiftwidth = 2
       vim.opt_local.expandtab = true
 
-      -- enable folding and use treesitter for folding
-      vim.opt_local.foldmethod = 'expr'
-      vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.opt_local.foldtext = ''
-      vim.opt_local.foldcolumn = '1'
-      vim.opt_local.foldlevel = 99
-      vim.opt_local.foldlevelstart = 0
-      vim.opt_local.foldnestmax = 4
-      vim.opt_local.foldenable = true
+      require('config.fold').default_folding()
     end
   })
 

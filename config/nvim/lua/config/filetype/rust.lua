@@ -30,7 +30,7 @@ function M.setup()
   vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'rust' },
     callback = function()
-      require('config.folding').enable_folding()
+      require('config.fold').default_folding()
     end
   })
 end
