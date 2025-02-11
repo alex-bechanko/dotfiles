@@ -35,7 +35,7 @@
       bind
       pkgs-stable.bitwarden
       cargo-flamegraph
-      commitlint
+      conform
       discord
       fd
       jq
