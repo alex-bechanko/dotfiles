@@ -72,7 +72,6 @@
       nvim-ufo
       onedark-nvim
       plenary-nvim
-      telescope-nvim
       which-key-nvim
     ];
   };

@@ -13,25 +13,21 @@
 --
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
+local M = {}
 
-require('config.color')
-require('config.default')
+function M.setup()
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'markdown' },
+    callback = function()
+      vim.b.wiki_path = '/home/alex/Documents/notes'
 
--- due to how lsp configuration works, it's necessary to pass these
--- modules to the lsp setup to be used when the lsp attaches
-local languages = {
-  dhall = require('config.filetype.dhall'),
-  gleam = require('config.filetype.gleam'),
-  go = require('config.filetype.go'),
-  lua = require('config.filetype.lua'),
-  nix = require('config.filetype.nix'),
-  rust = require('config.filetype.rust'),
-  markdown = require('config.filetype.markdown'),
-}
-for _, language_module in pairs(languages) do
-  language_module.setup()
+      vim.keymap.set('n', '<leader>fwf', function ()
+      end, { desc = "List Wiki Files by name" })
+
+      vim.keymap.set('n', '<leader>fwg', function()
+      end, { desc = 'List Wiki Headers' })
+    end
+  })
 end
 
-require('config.lsp').setup(languages)
-require('config.autocomplete')
-require('mini.indentscope').setup()
+return M

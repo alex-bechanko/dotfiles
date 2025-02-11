@@ -67,6 +67,3 @@ vim.o.wildignorecase = true
 
 -- use visual (not audio) bell
 vim.o.visualbell = true
-
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Telescope help tags"})

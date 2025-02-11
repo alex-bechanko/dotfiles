@@ -24,7 +24,7 @@ function M.setup(language_modules)
       if not client then return end
 
       for _, module in pairs(language_modules) do
-        if module.lsp == client.name then
+        if module.lsp and module.lsp == client.name then
           module.lsp_attach(args)
         end
       end
