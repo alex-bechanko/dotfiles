@@ -35,7 +35,9 @@
       bind
       pkgs-stable.bitwarden
       cargo-flamegraph
+      commitlint
       discord
+      fd
       jq
       lazygit
       (nerdfonts.override { fonts = [ "Inconsolata" "Iosevka" "IosevkaTerm" ]; })
