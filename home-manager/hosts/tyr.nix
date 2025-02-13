@@ -46,7 +46,6 @@
       tree
       unzip
       nodePackages.prettier
-      zk
     ];
   };
 

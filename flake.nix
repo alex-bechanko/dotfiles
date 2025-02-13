@@ -50,6 +50,7 @@
           ./home-manager/modules/git.nix
           ./home-manager/modules/nvim.nix
           ./home-manager/modules/zellij.nix
+          ./home-manager/modules/zk.nix
         ];
       };
       "everactive@tyr" = home-manager.lib.homeManagerConfiguration {
