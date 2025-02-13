@@ -32,6 +32,7 @@
     stateVersion = "22.11";
     file.".cobra.yaml".source = ../../config/cobra-cli/cobra.yaml;
     packages = with pkgs; [
+      bat
       bind
       pkgs-stable.bitwarden
       cargo-flamegraph
