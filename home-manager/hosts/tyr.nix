@@ -46,7 +46,7 @@
       tree
       unzip
       nodePackages.prettier
-      glow
+      zk
     ];
   };
 
