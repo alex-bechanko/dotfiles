@@ -40,7 +40,6 @@ vim.wo.colorcolumn = '-2'
 vim.o.showmatch = true
 
 vim.wo.cursorline = true
-vim.wo.cursorcolumn = true
 vim.o.ruler = true
 
 vim.o.incsearch = true
