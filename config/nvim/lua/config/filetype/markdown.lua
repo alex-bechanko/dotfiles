@@ -19,13 +19,7 @@ function M.setup()
   vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'markdown' },
     callback = function()
-      vim.b.wiki_path = '/home/alex/Documents/notes'
-
-      vim.keymap.set('n', '<leader>fwf', function ()
-      end, { desc = "List Wiki Files by name" })
-
-      vim.keymap.set('n', '<leader>fwg', function()
-      end, { desc = 'List Wiki Headers' })
+      require('config.fold').default_folding()
     end
   })
 end

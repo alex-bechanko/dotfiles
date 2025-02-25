@@ -42,7 +42,8 @@
   home.packages = with pkgs; [
     elmPackages.elm-language-server
     gopls
-    nil
+    nixd
+    nixpkgs-fmt
     gcc
     rustup
     sumneko-lua-language-server

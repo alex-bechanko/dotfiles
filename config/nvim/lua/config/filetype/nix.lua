@@ -29,10 +29,10 @@ function M.setup()
   })
 
   local lspconfig = require('lspconfig')
-  lspconfig.nil_ls.setup({})
+  lspconfig.nixd.setup({})
 end
 
 M.lsp_attach = require('config.lsp').default_lsp_attach
-M.lsp = 'nil_ls'
+M.lsp = 'nixd'
 
 return M

@@ -41,7 +41,9 @@
       fd
       jq
       lazygit
-      (nerdfonts.override { fonts = [ "Inconsolata" "Iosevka" "IosevkaTerm" ]; })
+      nerd-fonts.inconsolata
+      nerd-fonts.iosevka
+      nerd-fonts.iosevka-term
       obsidian
       ripgrep
       tree
