@@ -39,6 +39,7 @@
       conform
       discord
       fd
+      imagemagick
       jq
       lazygit
       nerd-fonts.inconsolata
