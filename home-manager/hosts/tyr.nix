@@ -50,6 +50,7 @@
       tree
       unzip
       nodePackages.prettier
+      zip
     ];
   };
 
