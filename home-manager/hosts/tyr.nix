@@ -40,8 +40,8 @@
       discord
       fd
       imagemagick
+      jujutsu
       jq
-      lazygit
       nerd-fonts.inconsolata
       nerd-fonts.iosevka
       nerd-fonts.iosevka-term
