@@ -52,25 +52,6 @@
           ./home-manager/modules/zellij.nix
         ];
       };
-      "everactive@tyr" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            username = "everactive";
-            hostname = "tyr";
-            pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
-          };
-          modules = [
-            ./home-manager/users/everactive.nix
-            ./home-manager/hosts/tyr.nix
-
-            ./home-manager/modules/alacritty.nix
-            ./home-manager/modules/bash.nix
-            ./home-manager/modules/direnv.nix
-            ./home-manager/modules/git.nix
-            ./home-manager/modules/nvim.nix
-            ./home-manager/modules/zellij.nix
-          ];
-      };
       "alex@odin" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {

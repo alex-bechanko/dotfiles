@@ -88,12 +88,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  users.users.everactive = {
-    isNormalUser = true;
-    description = "everactive";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
   # Install firefox.
   programs.firefox.enable = true;
   programs.steam = {
