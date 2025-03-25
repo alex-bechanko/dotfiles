@@ -33,6 +33,7 @@
     file.".cobra.yaml".source = ../../config/cobra-cli/cobra.yaml;
     packages = with pkgs; [
       bat
+      bc
       bind
       pkgs-stable.bitwarden
       cargo-flamegraph
