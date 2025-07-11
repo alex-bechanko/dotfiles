@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-{ username, pkgs, pkgs-stable, ... }: {
+{ config, username, pkgs, pkgs-stable, agenix, ... }: {
   nixpkgs = {
     overlays = [];
     config = {
@@ -24,14 +24,24 @@
     };
   };
 
+  age.secrets.gemini_api_key.file = ../../secrets/gemini_api_key.age;
+
   targets.genericLinux.enable = true;
 
   home = {
     inherit username;
     homeDirectory = "/home/${username}";
+
     stateVersion = "22.11";
+
     file.".cobra.yaml".source = ../../config/cobra-cli/cobra.yaml;
+
+    sessionVariables = {
+      GEMINI_API_KEY = "$(cat ${config.age.secrets.gemini_api_key.path})";
+    };
+
     packages = with pkgs; [
+      agenix # file encryption for nix
       bat # nice alternative to `cat`
       bc # basic cli calculator
       bind # domain name server
@@ -42,6 +52,7 @@
       fd # nice alternative to `find`
       imagemagick # cli tooling for image manipulation
       jujutsu # git alternative
+      jupyter # engine for notebook style computation
       jq # cli tool for json querying
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font

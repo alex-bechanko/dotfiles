@@ -26,11 +26,15 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+
+
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
   };
 
-  outputs = { nixpkgs, nixpkgs-24-05, home-manager, nixos-hardware, ... }: {
+  outputs = { nixpkgs, nixpkgs-24-05, home-manager, nixos-hardware, agenix, ... }: {
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
@@ -40,6 +44,7 @@
           username = "alex";
           hostname = "tyr";
           pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
+          agenix = agenix.packages.x86_64-linux.default;
         };
         modules = [
           ./home-manager/hosts/tyr.nix
@@ -50,6 +55,8 @@
           ./home-manager/modules/git.nix
           ./home-manager/modules/nvim.nix
           ./home-manager/modules/zellij.nix
+
+          agenix.homeManagerModules.default
         ];
       };
       "alex@odin" = home-manager.lib.homeManagerConfiguration {
@@ -93,6 +100,7 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-t14s
           ./nixos/tyr/configuration.nix
           ./nixos/tyr/hardware-configuration.nix
+          agenix.nixosModules.default
         ];
       };
     };

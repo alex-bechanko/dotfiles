@@ -35,3 +35,13 @@ end
 require('config.lsp').setup(languages)
 require('config.autocomplete')
 require('mini.indentscope').setup()
+require('codecompanion').setup({
+  strategies = {
+    chat = {
+      adapter = "gemini",
+    },
+    inline = {
+      adapter = "gemini"
+    },
+  },
+})
