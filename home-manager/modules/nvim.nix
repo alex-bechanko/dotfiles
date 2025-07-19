@@ -63,11 +63,11 @@
     plugins = with pkgs.vimPlugins; [
       catppuccin-nvim
       cmp-nvim-lsp
+      cmp_luasnip
       codecompanion-nvim
       dhall-vim
       luasnip
       mini-nvim
-      molten-nvim
       nvim-cmp
       nvim-dap
       nvim-lspconfig
@@ -75,16 +75,8 @@
       nvim-treesitter-parsers.gleam
       nvim-ufo
       onedark-nvim
-      otter-nvim
       plenary-nvim
-      quarto-nvim
       which-key-nvim
-    ];
-
-    extraPython3Packages = ps: with ps; [
-      pynvim
-      jupyter-client
-      pyperclip
     ];
   };
 

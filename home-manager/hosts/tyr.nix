@@ -52,7 +52,6 @@
       fd # nice alternative to `find`
       imagemagick # cli tooling for image manipulation
       jujutsu # git alternative
-      jupyter # engine for notebook style computation
       jq # cli tool for json querying
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
