@@ -66,3 +66,6 @@ vim.o.wildignorecase = true
 
 -- use visual (not audio) bell
 vim.o.visualbell = true
+
+-- enable project specific .nvim.lua
+vim.o.exrc = true
