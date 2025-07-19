@@ -16,18 +16,12 @@
 local M = {}
 
 function M.setup()
-  local lspconfig = require('lspconfig')
-  lspconfig.dhall_lsp_server.setup({})
-
   vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'dhall' },
+    pattern = "json",
     callback = function()
       require('config.fold').default_folding()
     end
   })
 end
-
-M.lsp_attach = require('config.lsp').default_lsp_attach
-M.lsp = 'dhall_lsp_server'
 
 return M
