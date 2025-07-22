@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, username, hostname, ... }: {
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
@@ -59,25 +59,6 @@
     vimAlias      = true;
     vimdiffAlias  = true;
     defaultEditor = true;
-
-    plugins = with pkgs.vimPlugins; [
-      catppuccin-nvim
-      cmp-nvim-lsp
-      cmp_luasnip
-      codecompanion-nvim
-      dhall-vim
-      luasnip
-      mini-nvim
-      nvim-cmp
-      nvim-dap
-      nvim-lspconfig
-      nvim-treesitter.withAllGrammars
-      nvim-treesitter-parsers.gleam
-      nvim-ufo
-      onedark-nvim
-      plenary-nvim
-      which-key-nvim
-    ];
   };
 
   xdg.configFile.nvim = {
