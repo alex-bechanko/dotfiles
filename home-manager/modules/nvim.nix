@@ -43,7 +43,7 @@
     elmPackages.elm-language-server
     gopls
     nixd
-    nixpkgs-fmt
+    nixfmt
     gcc
     quarto
     rustup
