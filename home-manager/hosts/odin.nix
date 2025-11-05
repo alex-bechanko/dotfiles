@@ -39,5 +39,7 @@
   programs.firefox.enable = true;
   programs.htop.enable = true;
 
+  nvim.enable = true;
+
   systemd.user.startServices = "sd-switch";
 }

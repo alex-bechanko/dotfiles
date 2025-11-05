@@ -55,4 +55,6 @@
     home-manager.enable = true;
     htop.enable = true;
   };
+
+  nvim.enable = true;
 }

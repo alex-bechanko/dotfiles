@@ -14,6 +14,8 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
+    nvim.url = "github:alex-bechanko/nvim";
+
   };
 
   outputs =
@@ -22,6 +24,7 @@
       nixpkgs-24-05,
       home-manager,
       nixos-hardware,
+      nvim,
       agenix,
       ...
     }:
@@ -44,10 +47,10 @@
             ./home-manager/modules/bash.nix
             ./home-manager/modules/direnv.nix
             ./home-manager/modules/git.nix
-            ./home-manager/modules/nvim.nix
             ./home-manager/modules/zellij.nix
 
             agenix.homeManagerModules.default
+            nvim.homeModules.default
           ];
         };
         "alex@odin" = home-manager.lib.homeManagerConfiguration {
@@ -60,10 +63,11 @@
           modules = [
             ./home-manager/hosts/odin.nix
 
-            ./home-manager/modules/nvim.nix
             ./home-manager/modules/bash.nix
             ./home-manager/modules/git.nix
             ./home-manager/modules/direnv.nix
+
+            nvim.homeModules.default
           ];
         };
         "alex@magni" = home-manager.lib.homeManagerConfiguration {
@@ -76,10 +80,11 @@
           modules = [
             ./home-manager/hosts/magni.nix
 
-            ./home-manager/modules/nvim.nix
             ./home-manager/modules/bash.nix
             ./home-manager/modules/git.nix
             ./home-manager/modules/direnv.nix
+
+            nvim.homeModules.default
           ];
         };
       };
