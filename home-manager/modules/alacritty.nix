@@ -12,8 +12,6 @@
       font.normal.style = "Regular";
       terminal.shell.program = "zellij";
       terminal.shell.args = [
-        "--session"
-        "term"
       ];
     };
   };
