@@ -2,9 +2,9 @@
 {
   programs.git = {
     enable = true;
-    userName = "Alex Bechanko";
-    userEmail = "alexbechanko@gmail.com";
-    extraConfig = {
+    settings = {
+      user.name = "Alex Bechanko";
+      user.email = "alexbechanko@gmail.com";
       init.defaultBranch = "main";
       core.pager = "less";
     };
