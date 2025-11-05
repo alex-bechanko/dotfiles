@@ -1,21 +1,13 @@
-# Dotfiles and configurations for my machines.
-# Copyright (C) 2024 Alex Bechanko
-# 
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
-{ inputs, lib, config, pkgs, username, hostname, ... }: {
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  username,
+  hostname,
+  ...
+}:
+{
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
@@ -54,10 +46,10 @@
   ];
 
   programs.neovim = {
-    enable        = true;
-    viAlias       = true;
-    vimAlias      = true;
-    vimdiffAlias  = true;
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
     defaultEditor = true;
   };
 
