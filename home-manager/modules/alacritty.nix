@@ -2,6 +2,7 @@
 {
   programs.alacritty = {
     enable = true;
+    theme = "gruvbox_dark";
     settings = {
       window.startup_mode = "Maximized";
       window.decorations = "None";
