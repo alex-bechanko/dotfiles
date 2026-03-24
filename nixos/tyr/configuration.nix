@@ -5,7 +5,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [];
+  imports = [ ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -14,6 +14,8 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     perf
   ];
+
+  hardware.enableAllFirmware = true;
 
   networking.hostName = "tyr"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -66,6 +68,28 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    #    extraConfig.pipewire."92-low-latency" = {
+    #      "context.modules" = [
+    #        {
+    #          name = "libpipewire-module-loopback";
+    #          args = {
+    #            "node.description" = "Fixed Internal Mic (Mono)";
+    #            "capture.props" = {
+    #              "node.name" = "capture.acp6x_mic";
+    #              "audio.position" = [ "FL" ]; # Grab only the Front Left channel
+    #              "target.object" = "alsa_input.pci-0000_05_00.6.acp6x_mic"; # You may need to verify this name
+    #              "stream.dont-remix" = true;
+    #              "node.passive" = true;
+    #            };
+    #            "playback.props" = {
+    #              "node.name" = "fixed_mic_input";
+    #              "media.class" = "Audio/Source";
+    #              "audio.position" = [ "MONO" ];
+    #            };
+    #          };
+    #        }
+    #      ];
+    #    };
   };
 
   services.tailscale.enable = true;
@@ -77,7 +101,12 @@
   users.users.alex = {
     isNormalUser = true;
     description = "alex";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "audio"
+    ];
   };
 
   # Install firefox.
@@ -92,8 +121,11 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
- 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -103,6 +135,9 @@
     wget
     git
     curl
+    usbutils
+    alsa-utils
+    pulseaudio
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

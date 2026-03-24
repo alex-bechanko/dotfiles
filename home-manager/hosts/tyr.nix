@@ -32,6 +32,7 @@
     ];
 
     sessionVariables = {
+      EDITOR = "nvim";
       GEMINI_API_KEY = "$(cat ${config.age.secrets.gemini_api_key.path})";
     };
 
