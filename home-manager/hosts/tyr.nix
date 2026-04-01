@@ -41,7 +41,7 @@
       bat # nice alternative to `cat`
       bc # basic cli calculator
       bind # domain name server
-      pkgs-stable.bitwarden # password manager
+      bitwarden-desktop # password manager
       cargo-flamegraph # binary debugging tool
       conform # code license management tool
       discord # messaging tool
