@@ -47,6 +47,7 @@
             ./home-manager/modules/bash.nix
             ./home-manager/modules/direnv.nix
             ./home-manager/modules/git.nix
+            ./home-manager/modules/jujutsu.nix
             ./home-manager/modules/zellij.nix
 
             agenix.homeManagerModules.default
