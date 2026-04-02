@@ -8,5 +8,11 @@
       init.defaultBranch = "main";
       core.pager = "less";
     };
+    ignores = [
+      ".envrc"
+      ".direnv/"
+      "*.swp"
+      "*.log"
+    ];
   };
 }
