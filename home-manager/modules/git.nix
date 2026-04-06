@@ -13,6 +13,7 @@
       ".direnv/"
       "*.swp"
       "*.log"
+      "result"
     ];
   };
 }
