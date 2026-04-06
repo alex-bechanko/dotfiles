@@ -56,7 +56,6 @@
       ripgrep # nice alternative to `grep`
       tree # pretty display of directory contents in a tree structure
       unzip # cli tool for unzipping .zip archives
-      nodePackages.prettier # code formatter
       zip # cli tool for creating .zip archives
     ];
   };
