@@ -20,6 +20,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       nixpkgs-24-05,
       home-manager,
@@ -39,6 +40,7 @@
             hostname = "tyr";
             pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
             agenix = agenix.packages.x86_64-linux.default;
+            dotfiles-pkgs = self.packages.x86_64-linux;
           };
           modules = [
             ./home-manager/hosts/tyr.nix
@@ -103,7 +105,14 @@
       };
 
       inherit home-manager;
-      inherit (home-manager) packages;
-    };
 
+      packages.x86_64-linux.periodic-note =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in
+        pkgs.callPackage ./scripts/periodic-note/default.nix {
+          inherit pkgs;
+          nvim = nvim.packages.x86_64-linux.default;
+        };
+    };
 }

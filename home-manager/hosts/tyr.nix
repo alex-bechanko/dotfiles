@@ -2,8 +2,8 @@
   config,
   username,
   pkgs,
-  pkgs-stable,
   agenix,
+  dotfiles-pkgs,
   ...
 }:
 {
@@ -57,6 +57,8 @@
       tree # pretty display of directory contents in a tree structure
       unzip # cli tool for unzipping .zip archives
       zip # cli tool for creating .zip archives
+
+      dotfiles-pkgs.periodic-note # create daily note file
     ];
   };
 
