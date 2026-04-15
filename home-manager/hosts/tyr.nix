@@ -40,14 +40,8 @@
       agenix # file encryption for nix
       bat # nice alternative to `cat`
       bc # basic cli calculator
-      bind # domain name server
-      bitwarden-desktop # password manager
-      cargo-flamegraph # binary debugging tool
-      conform # code license management tool
       discord # messaging tool
       fd # nice alternative to `find`
-      imagemagick # cli tooling for image manipulation
-      jujutsu # git alternative
       jq # cli tool for json querying
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font

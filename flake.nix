@@ -47,6 +47,7 @@
 
             ./home-manager/modules/alacritty.nix
             ./home-manager/modules/bash.nix
+            ./home-manager/modules/bitwarden.nix
             ./home-manager/modules/direnv.nix
             ./home-manager/modules/git.nix
             ./home-manager/modules/jujutsu.nix
