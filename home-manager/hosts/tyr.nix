@@ -39,7 +39,6 @@
     packages = with pkgs; [
       agenix # file encryption for nix
       bc # basic cli calculator
-      jq # cli tool for json querying
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
