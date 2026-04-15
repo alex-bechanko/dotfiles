@@ -42,7 +42,6 @@
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
-      ripgrep # nice alternative to `grep`
       tree # pretty display of directory contents in a tree structure
       unzip # cli tool for unzipping .zip archives
       zip # cli tool for creating .zip archives

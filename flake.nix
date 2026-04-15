@@ -55,6 +55,7 @@
             ./home-manager/modules/git.nix
             ./home-manager/modules/jujutsu.nix
             ./home-manager/modules/jq.nix
+            ./home-manager/modules/ripgrep.nix
             ./home-manager/modules/zellij.nix
 
             agenix.homeManagerModules.default
