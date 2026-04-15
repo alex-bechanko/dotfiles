@@ -73,23 +73,6 @@
             nvim.homeModules.default
           ];
         };
-        "alex@magni" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            username = "alex";
-            hostname = "magni";
-            pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
-          };
-          modules = [
-            ./home-manager/hosts/magni.nix
-
-            ./home-manager/modules/bash.nix
-            ./home-manager/modules/git.nix
-            ./home-manager/modules/direnv.nix
-
-            nvim.homeModules.default
-          ];
-        };
       };
 
       nixosConfigurations = {
