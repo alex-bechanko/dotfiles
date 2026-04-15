@@ -38,7 +38,6 @@
 
     packages = with pkgs; [
       agenix # file encryption for nix
-      bat # nice alternative to `cat`
       bc # basic cli calculator
       discord # messaging tool
       fd # nice alternative to `find`
