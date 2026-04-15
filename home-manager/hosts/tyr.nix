@@ -39,7 +39,6 @@
     packages = with pkgs; [
       agenix # file encryption for nix
       bc # basic cli calculator
-      discord # messaging tool
       fd # nice alternative to `find`
       jq # cli tool for json querying
       nerd-fonts.inconsolata # font

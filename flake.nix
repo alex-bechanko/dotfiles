@@ -47,8 +47,10 @@
 
             ./home-manager/modules/alacritty.nix
             ./home-manager/modules/bash.nix
+            ./home-manager/modules/bat.nix
             ./home-manager/modules/bitwarden.nix
             ./home-manager/modules/direnv.nix
+            ./home-manager/modules/discord.nix
             ./home-manager/modules/git.nix
             ./home-manager/modules/jujutsu.nix
             ./home-manager/modules/zellij.nix
