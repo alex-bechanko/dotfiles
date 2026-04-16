@@ -3,6 +3,7 @@
   username,
   pkgs,
   agenix,
+  nvim,
   dotfiles-pkgs,
   ...
 }:
@@ -14,6 +15,23 @@
       allowUnfreePredicate = (_: true);
     };
   };
+
+  imports = [
+    ../modules/alacritty.nix
+    ../modules/bash.nix
+    ../modules/bat.nix
+    ../modules/bitwarden.nix
+    ../modules/direnv.nix
+    ../modules/discord.nix
+    ../modules/fd.nix
+    ../modules/git.nix
+    ../modules/jujutsu.nix
+    ../modules/jq.nix
+    ../modules/ripgrep.nix
+    ../modules/zellij.nix
+    agenix.homeManagerModules.default
+    nvim.homeModules.default
+  ];
 
   age.secrets.gemini_api_key.file = ../../secrets/gemini_api_key.age;
 
