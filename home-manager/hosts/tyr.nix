@@ -25,8 +25,6 @@
 
     stateVersion = "22.11";
 
-    file.".cobra.yaml".source = ../../config/cobra-cli/cobra.yaml;
-
     sessionPath = [
       "/home/${username}/.local/../bin"
     ];
