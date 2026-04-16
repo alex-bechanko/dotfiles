@@ -48,7 +48,7 @@ in
     };
 
     packages = with pkgs; [
-      agenix # file encryption for nix
+      agenix-cli # file encryption for nix
       bc # basic cli calculator
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
@@ -66,6 +66,16 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
+    bat.enable = true;
+    bitwarden-desktop.enable = true;
+    fd.enable = true;
+    home-manager.enable = true;
+    jq.enable = true;
+    firefox.enable = true;
+    htop.enable = true;
+    obsidian.enable = true;
+    ripgrep.enable = true;
+
     alacritty = {
       enable = true;
       theme = "gruvbox_dark";
@@ -80,6 +90,7 @@ in
         terminal.shell.program = "zellij";
       };
     };
+
     bash = {
       enable = true;
       initExtra = ''
@@ -91,13 +102,13 @@ in
         dotfiles = "cd /home/alex/Projects/github.com/alex-bechanko/dotfiles";
       };
     };
-    bat.enable = true;
-    bitwarden-desktop.enable = true;
+
     direnv = {
       enable = true;
       enableBashIntegration = true;
       nix-direnv.enable = true;
     };
+
     discord = {
       enable = true;
       settings = {
@@ -105,7 +116,7 @@ in
         openH264Enabled = true;
       };
     };
-    fd.enable = true;
+
     git = {
       enable = true;
       settings = {
@@ -124,7 +135,7 @@ in
         "result"
       ];
     };
-    home-manager.enable = true;
+
     jujutsu = {
       enable = true;
       settings = {
@@ -134,11 +145,7 @@ in
         };
       };
     };
-    jq.enable = true;
-    firefox.enable = true;
-    htop.enable = true;
-    obsidian.enable = true;
-    ripgrep.enable = true;
+
     zellij = {
       enable = true;
       enableBashIntegration = true;
