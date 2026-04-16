@@ -22,7 +22,12 @@ in
   };
 
   imports = [
-    ../modules/bitwarden.nix
+    ../modules/agenix-cli.nix
+    ../modules/bc.nix
+    ../modules/bitwarden-desktop.nix
+    ../modules/tree.nix
+    ../modules/unzip.nix
+    ../modules/zip.nix
 
     agenix.homeManagerModules.default
     nvim.homeModules.default
@@ -48,14 +53,9 @@ in
     };
 
     packages = with pkgs; [
-      agenix-cli # file encryption for nix
-      bc # basic cli calculator
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
-      tree # pretty display of directory contents in a tree structure
-      unzip # cli tool for unzipping .zip archives
-      zip # cli tool for creating .zip archives
 
       dotfiles-pkgs.periodic-note # create daily note file
     ];
@@ -66,7 +66,9 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
+    agenix-cli.enable = true;
     bat.enable = true;
+    bc.enable = true;
     bitwarden-desktop.enable = true;
     fd.enable = true;
     home-manager.enable = true;
@@ -75,6 +77,9 @@ in
     htop.enable = true;
     obsidian.enable = true;
     ripgrep.enable = true;
+    tree.enable = true;
+    unzip.enable = true;
+    zip.enable = true;
 
     alacritty = {
       enable = true;
