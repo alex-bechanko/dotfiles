@@ -4,7 +4,6 @@
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -22,7 +21,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-24-05,
       home-manager,
       nixos-hardware,
       nvim,
@@ -38,7 +36,6 @@
           extraSpecialArgs = {
             username = "alex";
             hostname = "tyr";
-            pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
             agenix = agenix.packages.x86_64-linux.default;
             dotfiles-pkgs = self.packages.x86_64-linux;
           };
@@ -67,7 +64,6 @@
           extraSpecialArgs = {
             username = "alex";
             hostname = "odin";
-            pkgs-stable = nixpkgs-24-05.legacyPackages.x86_64-linux;
           };
           modules = [
             ./home-manager/hosts/odin.nix
