@@ -132,6 +132,7 @@ in
         init.defaultBranch = "main";
         core.pager = "less";
       };
+      signing.format = null;
       ignores = [
         ".envrc"
         ".direnv/"
