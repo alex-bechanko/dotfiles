@@ -44,22 +44,6 @@
             ./home-manager/hosts/tyr.nix
           ];
         };
-        "alex@odin" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            username = "alex";
-            hostname = "odin";
-          };
-          modules = [
-            ./home-manager/hosts/odin.nix
-
-            ./home-manager/modules/bash.nix
-            ./home-manager/modules/git.nix
-            ./home-manager/modules/direnv.nix
-
-            nvim.homeModules.default
-          ];
-        };
       };
 
       nixosConfigurations = {
