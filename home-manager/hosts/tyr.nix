@@ -1,12 +1,17 @@
 {
   config,
-  username,
   pkgs,
   agenix,
   nvim,
   dotfiles-pkgs,
   ...
 }:
+let
+  username = "alex";
+  host = "tyr";
+  name = "Alex Bechanko";
+  email = "alexbechanko@gmail.com";
+in
 {
   nixpkgs = {
     overlays = [ ];
@@ -17,18 +22,8 @@
   };
 
   imports = [
-    ../modules/alacritty.nix
-    ../modules/bash.nix
-    ../modules/bat.nix
     ../modules/bitwarden.nix
-    ../modules/direnv.nix
-    ../modules/discord.nix
-    ../modules/fd.nix
-    ../modules/git.nix
-    ../modules/jujutsu.nix
-    ../modules/jq.nix
-    ../modules/ripgrep.nix
-    ../modules/zellij.nix
+
     agenix.homeManagerModules.default
     nvim.homeModules.default
   ];
@@ -70,10 +65,112 @@
 
   fonts.fontconfig.enable = true;
 
-  programs.home-manager.enable = true;
-  programs.firefox.enable = true;
-  programs.htop.enable = true;
+  programs = {
+    alacritty = {
+      enable = true;
+      theme = "gruvbox_dark";
+      settings = {
+        window.startup_mode = "Maximized";
+        window.decorations = "None";
+        font.size = 10.0;
+        font.bold.family = "IosevkaTerm Nerd Font";
+        font.bold.style = "Bold";
+        font.normal.family = "IosevkaTerm Nerd Font";
+        font.normal.style = "Regular";
+        terminal.shell.program = "zellij";
+      };
+    };
+    bash = {
+      enable = true;
+      initExtra = ''
+        export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+      '';
+      shellAliases = {
+        home-manager = "home-manager --flake /home/alex/Projects/github.com/alex-bechanko/dotfiles#${username}@${host}";
+        diff = "diff --color -u";
+        dotfiles = "cd /home/alex/Projects/github.com/alex-bechanko/dotfiles";
+      };
+    };
+    bat.enable = true;
+    bitwarden-desktop.enable = true;
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
+    discord = {
+      enable = true;
+      settings = {
+        enableHardwareAcceleration = true;
+        openH264Enabled = true;
+      };
+    };
+    fd.enable = true;
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          inherit name;
+          inherit email;
+        };
+        init.defaultBranch = "main";
+        core.pager = "less";
+      };
+      ignores = [
+        ".envrc"
+        ".direnv/"
+        "*.swp"
+        "*.log"
+        "result"
+      ];
+    };
+    home-manager.enable = true;
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          inherit name;
+          inherit email;
+        };
+      };
+    };
+    jq.enable = true;
+    firefox.enable = true;
+    htop.enable = true;
+    obsidian.enable = true;
+    ripgrep.enable = true;
+    zellij = {
+      enable = true;
+      enableBashIntegration = true;
+      exitShellOnExit = true;
+      settings = {
+        theme = "gruvbox-dark";
+      };
+      extraConfig = ''
+        keybinds {
+        normal {
+          unbind "Ctrl q"  
+          bind "Alt s" {
+            Run "periodic-note" "day" {
+              floating true
+              x "0"
+              y "0"
+              width "100%"
+              height "50%"
+              close_on_exit true
+            }
+          }
+        }
+        session {
+          bind "Ctrl q" {
+            Quit
+          }
+        }
+        }
+      '';
 
+    };
+  };
   nvim.enable = true;
   systemd.user.startServices = "sd-switch";
 }

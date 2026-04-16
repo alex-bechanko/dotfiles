@@ -1,4 +1,0 @@
-{ ... }:
-{
-  programs.fd.enable = true;
-}

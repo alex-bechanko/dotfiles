@@ -34,8 +34,6 @@
         "alex@tyr" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            username = "alex";
-            hostname = "tyr";
             inherit agenix;
             inherit nvim;
             dotfiles-pkgs = self.packages.x86_64-linux;
