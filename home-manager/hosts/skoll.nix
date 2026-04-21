@@ -144,6 +144,7 @@ in
         {
           condition = "gitdir:~/Projects/github.com/alex-bechanko/";
           contents.user.email = "alexbechanko@gmail.com";
+          contents.core.sshCommand = "ssh -i ~/.ssh/alex-bechanko_ed25519";
         }
       ];
       settings = {
