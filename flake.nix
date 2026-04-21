@@ -42,6 +42,16 @@
             ./home-manager/hosts/tyr.nix
           ];
         };
+        "alexbechanko@skoll" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit nvim;
+            dotfiles-pkgs = self.packages.x86_64-linux;
+          };
+          modules = [
+            ./home-manager/hosts/skoll.nix
+          ];
+        };
       };
 
       nixosConfigurations = {
