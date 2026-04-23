@@ -52,6 +52,8 @@ in
     };
 
     packages = with pkgs; [
+      docker-compose # podman will hook into this
+
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
@@ -114,6 +116,7 @@ in
         diff = "diff --color -u";
         dotfiles = "cd /home/alex/Projects/github.com/alex-bechanko/dotfiles";
         ls = "ls --color=auto";
+        docker = "podman";
       };
     };
 
