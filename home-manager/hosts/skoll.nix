@@ -21,6 +21,7 @@ in
   };
 
   imports = [
+    ../modules/_1password.nix
     ../modules/bc.nix
     ../modules/bitwarden-desktop.nix
     ../modules/slack.nix
@@ -65,6 +66,7 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
+    _1password-gui.enable = true;
     bat.enable = true;
     bc.enable = true;
     bitwarden-desktop.enable = true;
@@ -209,4 +211,7 @@ in
   };
   nvim.enable = true;
   systemd.user.startServices = "sd-switch";
+  services = {
+    podman.enable = true;
+  };
 }
