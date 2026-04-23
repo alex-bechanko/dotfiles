@@ -149,6 +149,7 @@ in
           contents.core.sshCommand = "ssh -i ~/.ssh/alex-bechanko_ed25519";
         }
       ];
+      lfs.enable = true;
       settings = {
         user = {
           inherit name;
