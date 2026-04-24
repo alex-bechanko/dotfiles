@@ -160,6 +160,7 @@ in
         };
         init.defaultBranch = "main";
         core.pager = "less";
+        pull.ff = "only";
       };
       signing.format = null;
       ignores = [
