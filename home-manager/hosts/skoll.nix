@@ -57,6 +57,7 @@ in
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
+      tio
       vivid
 
       dotfiles-pkgs.periodic-note # create daily note file
