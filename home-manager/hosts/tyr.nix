@@ -56,6 +56,7 @@ in
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
+      xclip
 
       dotfiles-pkgs.periodic-note # create daily note file
     ];
@@ -158,6 +159,8 @@ in
       exitShellOnExit = true;
       settings = {
         theme = "gruvbox-dark";
+        copy_command = "xclip -selection clipboard";
+        copy_on_select = true;
       };
       extraConfig = ''
         keybinds {
