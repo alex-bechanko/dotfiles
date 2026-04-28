@@ -163,6 +163,9 @@ in
         init.defaultBranch = "main";
         core.pager = "less";
         pull.ff = "only";
+        diff.tool = "nvimdiff";
+        difftool.prompt = false;
+        difftool.nvimdiff.cmd = "nvim -d \"$LOCAL\" \"$REMOTE\"";
       };
       signing.format = null;
       ignores = [
@@ -220,6 +223,25 @@ in
   };
   nvim.enable = true;
   systemd.user.startServices = "sd-switch";
+  systemd.user.sockets.podman = {
+    Unit.Description = "Podman API Socket";
+    Socket = {
+      ListenStream = "%t/podman/podman.sock";
+      SocketMode = "0660";
+    };
+    Install.WantedBy = [ "sockets.target" ];
+  };
+  systemd.user.services.podman = {
+    Unit = {
+      Description = "Podman API Service";
+      Requires = [ "podman.socket" ];
+      After = [ "podman.socket" ];
+    };
+    Service = {
+      Type = "exec";
+      ExecStart = "${pkgs.podman}/bin/podman system service";
+    };
+  };
   services = {
     podman.enable = true;
   };
