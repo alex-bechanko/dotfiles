@@ -112,6 +112,11 @@ in
         export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
         export PS1="\[\033[38;5;142m\]\u\[\033[38;5;223m\]@\[\033[38;5;108m\]\h\[\033[00m\]:\[\033[01;38;5;109m\]\w\[\033[38;5;208m\]\$\[\033[00m\]"
         export LS_COLORS="$(vivid generate gruvbox-dark)"
+        if [ -f ~/.profile.work ]; then
+          source ~/.profile.work
+        else
+          echo "~/.profile.work not found, skipping"
+        fi
       '';
       shellAliases = {
         home-manager = "home-manager --flake /home/${username}/Projects/github.com/alex-bechanko/dotfiles#${username}@${host}";
