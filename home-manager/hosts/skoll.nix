@@ -62,6 +62,7 @@ in
       xclip
 
       dotfiles-pkgs.periodic-note # create daily note file
+      dotfiles-pkgs.setup-aws # little script to setup aws
     ];
   };
 

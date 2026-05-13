@@ -76,5 +76,13 @@
           inherit pkgs;
           nvim = nvim.packages.x86_64-linux.default;
         };
+
+      packages.x86_64-linux.setup-aws =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in
+        pkgs.callPackage ./scripts/setup-aws/default.nix {
+          inherit pkgs;
+        };
     };
 }
