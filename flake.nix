@@ -84,5 +84,13 @@
         pkgs.callPackage ./scripts/setup-aws/default.nix {
           inherit pkgs;
         };
+
+      packages.x86_64-linux.project-session =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in
+        pkgs.callPackage ./scripts/project-session/default.nix {
+          inherit pkgs;
+        };
     };
 }
