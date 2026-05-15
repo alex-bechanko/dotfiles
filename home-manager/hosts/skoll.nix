@@ -57,6 +57,7 @@ in
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
+      python313Packages.towncrier # changelog management
       tio
       vivid
       xclip
@@ -76,7 +77,6 @@ in
     bat.enable = true;
     bc.enable = true;
     bitwarden-desktop.enable = true;
-    claude-code.enable = true;
     fd.enable = true;
     home-manager.enable = true;
     jq.enable = true;
@@ -126,6 +126,52 @@ in
         dotfiles = "cd /home/alex/Projects/github.com/alex-bechanko/dotfiles";
         ls = "ls --color=auto";
         docker = "podman";
+      };
+    };
+
+    claude-code = {
+      enable = true;
+      settings = {
+        permissions = [
+          "WebSearch"
+          "WebFetch"
+          "Read"
+          "Glob"
+          "Grep"
+          "Bash(git status:*)"
+          "Bash(git log:*)"
+          "Bash(git diff:*)"
+          "Bash(git branch:*)"
+          "Bash(git show:*)"
+          "Bash(cargo:*)"
+          "Bash(jj status:*)"
+          "Bash(jj log:*)"
+          "Bash(jj diff:*)"
+          "Bash(jj show:*)"
+          "Bash(jj bookmark list:*)"
+          "Bash(nix eval:*)"
+          "Bash(nix flake show:*)"
+          "Bash(nix flake metadata:*)"
+          "Bash(nix flake info:*)"
+          "Bash(nix flake check:*)"
+          "Bash(nix search:*)"
+          "Bash(nix path-info:*)"
+          "Bash(nix derivation show:*)"
+          "Bash(nix store ls:*)"
+          "Bash(nix why-depends:*)"
+          "Bash(gh pr view:*)"
+          "Bash(gh pr list:*)"
+          "Bash(gh pr diff:*)"
+          "Bash(gh pr checks:*)"
+          "Bash(gh issue view:*)"
+          "Bash(gh issue list:*)"
+          "Bash(gh run list:*)"
+          "Bash(gh run view:*)"
+          "Bash(gh release list:*)"
+          "Bash(gh release view:*)"
+          "Bash(gh repo view:*)"
+          "Bash(gh api repos:*)"
+        ];
       };
     };
 
