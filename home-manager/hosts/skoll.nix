@@ -45,6 +45,7 @@ in
 
     sessionPath = [
       "/home/${username}/.local/../bin"
+      "/home/${username}/.local/bin"
     ];
 
     sessionVariables = {
