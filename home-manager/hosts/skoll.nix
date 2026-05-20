@@ -300,5 +300,6 @@ in
   };
   services = {
     podman.enable = true;
+    flameshot.enable = true;
   };
 }
