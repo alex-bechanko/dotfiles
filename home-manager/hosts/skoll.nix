@@ -55,6 +55,7 @@ in
     packages = with pkgs; [
       docker-compose # podman will hook into this
 
+      just
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
