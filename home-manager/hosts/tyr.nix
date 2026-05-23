@@ -35,8 +35,6 @@ in
 
   age.secrets.gemini_api_key.file = ../../secrets/gemini_api_key.age;
 
-  targets.genericLinux.enable = true;
-
   home = {
     inherit username;
     homeDirectory = "/home/${username}";
