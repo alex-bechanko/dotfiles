@@ -131,6 +131,7 @@ in
     zellij = {
       enable = true;
       enableBashIntegration = true;
+      enableZshIntegration = true;
       exitShellOnExit = true;
       settings = {
         theme = "gruvbox-dark";

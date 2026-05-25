@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }:
 {
@@ -13,5 +14,11 @@
     host = "tyr";
   };
 
-  home.username = "alex";
+  home = {
+    username = "alex";
+
+    sessionPath = [
+      "${config.home.homeDirectory}/.local/bin"
+    ];
+  };
 }

@@ -107,6 +107,7 @@
       "video"
       "audio"
     ];
+    shell = pkgs.zsh;
   };
 
   # Install firefox.
@@ -118,6 +119,7 @@
     localNetworkGameTransfers.openFirewall = true;
   };
   programs.nix-ld.enable = true;
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -138,6 +140,10 @@
     usbutils
     alsa-utils
     pulseaudio
+  ];
+
+  environment.shells = with pkgs; [
+    zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
