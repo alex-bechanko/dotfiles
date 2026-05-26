@@ -55,7 +55,6 @@ in
 
     packages = with pkgs; [
       _1password-cli
-      docker-compose # podman will hook into this
 
       just
       nerd-fonts.inconsolata # font
@@ -129,7 +128,6 @@ in
         diff = "diff --color -u";
         dotfiles = "cd /home/alex/Projects/github.com/alex-bechanko/dotfiles";
         ls = "ls --color=auto";
-        docker = "podman";
       };
     };
 
@@ -282,27 +280,8 @@ in
   };
   nvim.enable = true;
   systemd.user.startServices = "sd-switch";
-  systemd.user.sockets.podman = {
-    Unit.Description = "Podman API Socket";
-    Socket = {
-      ListenStream = "%t/podman/podman.sock";
-      SocketMode = "0660";
-    };
-    Install.WantedBy = [ "sockets.target" ];
-  };
-  systemd.user.services.podman = {
-    Unit = {
-      Description = "Podman API Service";
-      Requires = [ "podman.socket" ];
-      After = [ "podman.socket" ];
-    };
-    Service = {
-      Type = "exec";
-      ExecStart = "${pkgs.podman}/bin/podman system service";
-    };
-  };
+
   services = {
-    podman.enable = true;
     flameshot.enable = true;
   };
 }
