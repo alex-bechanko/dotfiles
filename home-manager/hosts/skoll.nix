@@ -50,9 +50,11 @@ in
 
     sessionVariables = {
       EDITOR = "nvim";
+      PATH = "/usr/bin:/usr/sbin:$PATH";
     };
 
     packages = with pkgs; [
+      _1password-cli
       docker-compose # podman will hook into this
 
       just
