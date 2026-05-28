@@ -104,6 +104,13 @@ in
         font.normal.family = "IosevkaTerm Nerd Font";
         font.normal.style = "Regular";
         terminal.shell.program = "zellij";
+        keyboard.bindings = [
+          {
+            key = "Return";
+            mods = "Shift";
+            chars = builtins.fromJSON ''"\u001B\r"'';
+          }
+        ];
       };
     };
 
