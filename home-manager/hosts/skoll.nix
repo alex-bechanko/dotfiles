@@ -69,6 +69,7 @@ in
       dotfiles-pkgs.periodic-note # create daily note file
       dotfiles-pkgs.setup-aws # little script to setup aws
       dotfiles-pkgs.project-session # open a zellij tab for a project
+      dotfiles-pkgs.gh-actions-review-sha # little script to check commit SHAs on github actions
     ];
   };
 
