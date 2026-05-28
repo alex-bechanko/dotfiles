@@ -92,5 +92,13 @@
         pkgs.callPackage ./scripts/project-session/default.nix {
           inherit pkgs;
         };
+
+      packages.x86_64-linux.gh-actions-review-sha =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in
+        pkgs.callPackage ./scripts/gh-actions-review-sha/default.nix {
+          inherit pkgs;
+        };
     };
 }
