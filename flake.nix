@@ -67,38 +67,29 @@
       };
 
       inherit home-manager;
-
-      packages.x86_64-linux.periodic-note =
+      packages.x86_64-linux =
         let
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          script-package-with-pkgs =
+            pkgs: script:
+            pkgs.callPackage script {
+              inherit pkgs;
+            };
+          script-package = script-package-with-pkgs pkgs;
         in
-        pkgs.callPackage ./scripts/periodic-note/default.nix {
-          inherit pkgs;
-          nvim = nvim.packages.x86_64-linux.default;
-        };
+        {
+          periodic-note = pkgs.callPackage ./scripts/periodic-note/default.nix {
+            inherit pkgs;
+            nvim = nvim.packages.x86_64-linux.default;
+          };
 
-      packages.x86_64-linux.setup-aws =
-        let
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        in
-        pkgs.callPackage ./scripts/setup-aws/default.nix {
-          inherit pkgs;
-        };
+          setup-aws = script-package ./scripts/setup-aws/default.nix;
 
-      packages.x86_64-linux.project-session =
-        let
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        in
-        pkgs.callPackage ./scripts/project-session/default.nix {
-          inherit pkgs;
-        };
+          project-session = script-package ./scripts/project-session/default.nix;
 
-      packages.x86_64-linux.gh-actions-review-sha =
-        let
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        in
-        pkgs.callPackage ./scripts/gh-actions-review-sha/default.nix {
-          inherit pkgs;
+          gh-actions-review-sha = script-package ./scripts/gh-actions-review-sha/default.nix;
+
+          towncrier = script-package ./scripts/towncrier/default.nix;
         };
     };
 }

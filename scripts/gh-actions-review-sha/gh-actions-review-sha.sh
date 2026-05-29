@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ $# -eq 0 ]]; then
-    echo "Usage: $0 <workflow.yaml> [...]" >&2
+APPLY=false
+
+usage() {
+    echo "Usage: $0 [--apply] <workflow.yaml> [...]" >&2
     exit 1
+}
+
+while [[ $# -gt 0 && "$1" == --* ]]; do
+    case "$1" in
+        --apply) APPLY=true; shift ;;
+        *) usage ;;
+    esac
+done
+
+if [[ $# -eq 0 ]]; then
+    usage
 fi
 
 is_sha() {
@@ -79,7 +92,6 @@ for file in "$@"; do
         linenum="${grep_line%%:*}"
         content="${grep_line#*:}"
 
-        # Extract uses value: strip leading whitespace/dash, take part after "uses:", strip comments
         uses=$(echo "$content" | sed 's/.*uses:[[:space:]]*//' | sed 's/[[:space:]]*#.*//' | tr -d '[:space:]')
         [[ -z "$uses" ]] && continue
         [[ "$uses" == ./* ]] && continue
@@ -94,12 +106,18 @@ for file in "$@"; do
                 echo "OK     ${location}: $uses"
             elif [[ -n "$commit_sha" ]]; then
                 echo "CHANGE ${location}: $uses -> ${repo_path}@${commit_sha}"
+                if [[ "$APPLY" == true ]]; then
+                    sed -i "${linenum}s|@${ref}|@${commit_sha}|" "$file"
+                fi
             else
                 echo "ERROR  ${location}: could not resolve SHA for $uses" >&2
             fi
         else
             if [[ -n "$commit_sha" ]]; then
                 echo "PIN    ${location}: $uses -> ${repo_path}@${commit_sha}"
+                if [[ "$APPLY" == true ]]; then
+                    sed -i "${linenum}s|@${ref}|@${commit_sha} # ${ref}|" "$file"
+                fi
             else
                 echo "ERROR  ${location}: could not resolve tag for $uses" >&2
             fi

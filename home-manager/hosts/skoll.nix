@@ -60,7 +60,6 @@ in
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
-      python313Packages.towncrier # changelog management
       tio
       vivid
       xclip
@@ -70,10 +69,41 @@ in
       dotfiles-pkgs.setup-aws # little script to setup aws
       dotfiles-pkgs.project-session # open a zellij tab for a project
       dotfiles-pkgs.gh-actions-review-sha # little script to check commit SHAs on github actions
+      dotfiles-pkgs.towncrier # wrapper around towncrier to work sanely
     ];
   };
 
-  xdg.enable = true;
+  xdg = {
+    enable = true;
+    configFile."towncrier/towncrier.toml".text = ''
+      [tool.towncrier]
+      directory = "changelog.d"
+      filename = "CHANGELOG.md"
+      title_format = "## {version} - {project_date}"
+      issue_format = "[{issue}](https://utilidata.atlassian.net/browse/{issue})"
+      underlines = ["", "", ""]
+
+      [[tool.towncrier.type]]
+      directory = "breaking"
+      name = "Breaking Changes"
+      showcontent = true
+
+      [[tool.towncrier.type]]
+      directory = "feature"
+      name = "New Features"
+      showcontent = true
+
+      [[tool.towncrier.type]]
+      directory = "fix"
+      name = "Fixes"
+      showcontent = true
+
+      [[tool.towncrier.type]]
+      directory = "misc"
+      name = "Miscellaneous"
+      showcontent = false
+    '';
+  };
 
   fonts.fontconfig.enable = true;
 

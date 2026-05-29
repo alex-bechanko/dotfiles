@@ -1,11 +1,12 @@
 { pkgs, ... }:
 let
   app = pkgs.writeShellApplication {
-    name = "gh-actions-review-sha";
+    name = "towncrier";
     runtimeInputs = [
       pkgs.coreutils
+      pkgs.python313Packages.towncrier
     ];
-    text = builtins.readFile ./gh-actions-review-sha.sh;
+    text = builtins.readFile ./towncrier.sh;
   };
 
 in
