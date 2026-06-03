@@ -21,7 +21,6 @@ in
   };
 
   imports = [
-    ../modules/_1password.nix
     ../modules/bc.nix
     ../modules/bitwarden-desktop.nix
     ../modules/slack.nix
@@ -54,8 +53,6 @@ in
     };
 
     packages = with pkgs; [
-      _1password-cli
-
       just
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
@@ -108,7 +105,6 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
-    _1password-gui.enable = true;
     bat.enable = true;
     bc.enable = true;
     bitwarden-desktop.enable = true;
@@ -173,6 +169,12 @@ in
     claude-code = {
       enable = true;
       settings = {
+        mcpServers = {
+          atlassian = {
+            type = "http";
+            url = "https://mcp.atlassian.com/mcp";
+          };
+        };
         permissions = {
           allow = [
             "WebSearch"
@@ -213,6 +215,28 @@ in
             "Bash(gh release view:*)"
             "Bash(gh repo view:*)"
             "Bash(gh api repos:*)"
+
+            # Atlassian MCP - read/search only
+            "mcp__claude_ai_Atlassian__atlassianUserInfo"
+            "mcp__claude_ai_Atlassian__getAccessibleAtlassianResources"
+            "mcp__claude_ai_Atlassian__search"
+            "mcp__claude_ai_Atlassian__fetch"
+            "mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql"
+            "mcp__claude_ai_Atlassian__getJiraIssue"
+            "mcp__claude_ai_Atlassian__getVisibleJiraProjects"
+            "mcp__claude_ai_Atlassian__getJiraIssueRemoteIssueLinks"
+            "mcp__claude_ai_Atlassian__getJiraProjectIssueTypesMetadata"
+            "mcp__claude_ai_Atlassian__getJiraIssueTypeMetaWithFields"
+            "mcp__claude_ai_Atlassian__getIssueLinkTypes"
+            "mcp__claude_ai_Atlassian__getTransitionsForJiraIssue"
+            "mcp__claude_ai_Atlassian__getConfluencePage"
+            "mcp__claude_ai_Atlassian__getConfluenceSpaces"
+            "mcp__claude_ai_Atlassian__getPagesInConfluenceSpace"
+            "mcp__claude_ai_Atlassian__getConfluencePageDescendants"
+            "mcp__claude_ai_Atlassian__searchConfluenceUsingCql"
+            "mcp__claude_ai_Atlassian__getConfluencePageFooterComments"
+            "mcp__claude_ai_Atlassian__getConfluencePageInlineComments"
+            "mcp__claude_ai_Atlassian__getConfluenceCommentChildren"
           ];
         };
       };
