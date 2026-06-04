@@ -245,11 +245,11 @@
         "plugins-which-key": "plugins-which-key"
       },
       "locked": {
-        "lastModified": 1778762012,
-        "narHash": "sha256-8v2eGm+cTEnLb1SUnL0Il86cPGdjKcJ7rS7c4xUHWIU=",
+        "lastModified": 1780581236,
+        "narHash": "sha256-z1USdXeIY3GdIylNN98wuikjQV66B0uYyZcVBfTQXRo=",
         "owner": "alex-bechanko",
         "repo": "nvim",
-        "rev": "a3238aa6af815484d32b45eeb5f86a321cfdeca1",
+        "rev": "e3ec8e253fbcebff1c0f3e24b692332a86f19e9d",
         "type": "github"
       },
       "original": {
