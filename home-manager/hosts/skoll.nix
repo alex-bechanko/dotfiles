@@ -57,6 +57,7 @@ in
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
+      prometheus
       tio
       vivid
       xclip
