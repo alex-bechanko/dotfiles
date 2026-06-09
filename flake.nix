@@ -90,6 +90,8 @@
           gh-actions-review-sha = script-package ./scripts/gh-actions-review-sha/default.nix;
 
           towncrier = script-package ./scripts/towncrier/default.nix;
+
+          jj-fix-git-lfs = script-package ./scripts/jj-fix-git-lfs/default.nix;
         };
     };
 }

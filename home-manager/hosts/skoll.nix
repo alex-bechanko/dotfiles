@@ -68,6 +68,7 @@ in
       dotfiles-pkgs.project-session # open a zellij tab for a project
       dotfiles-pkgs.gh-actions-review-sha # little script to check commit SHAs on github actions
       dotfiles-pkgs.towncrier # wrapper around towncrier to work sanely
+      dotfiles-pkgs.jj-fix-git-lfs # restore git lfs files in jj working copy
     ];
   };
 
@@ -304,6 +305,9 @@ in
         user = {
           inherit name;
           inherit email;
+        };
+        aliases = {
+          fix-git-lfs = ["util" "exec" "--" "jj-fix-git-lfs"];
         };
       };
     };
