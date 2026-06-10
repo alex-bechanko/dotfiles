@@ -15,6 +15,8 @@
 
     nvim.url = "github:alex-bechanko/nvim";
 
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
+
   };
 
   outputs =
@@ -25,31 +27,36 @@
       nixos-hardware,
       nvim,
       agenix,
+      claude-code-nix,
       ...
     }:
+    let
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [
+          claude-code-nix.overlays.default
+          nvim.overlays.default
+          self.overlays.default
+        ];
+      };
+    in
     {
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
         "alex@tyr" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit agenix;
-            inherit nvim;
-            dotfiles-pkgs = self.packages.x86_64-linux;
-          };
+          inherit pkgs;
           modules = [
             ./home-manager/hosts/tyr.nix
+            agenix.homeManagerModules.default
+            nvim.homeModules.default
           ];
         };
         "alexbechanko@skoll" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit nvim;
-            dotfiles-pkgs = self.packages.x86_64-linux;
-          };
+          inherit pkgs;
           modules = [
             ./home-manager/hosts/skoll.nix
+            nvim.homeModules.default
           ];
         };
       };
@@ -67,31 +74,15 @@
       };
 
       inherit home-manager;
-      packages.x86_64-linux =
-        let
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          script-package-with-pkgs =
-            pkgs: script:
-            pkgs.callPackage script {
-              inherit pkgs;
-            };
-          script-package = script-package-with-pkgs pkgs;
-        in
-        {
-          periodic-note = pkgs.callPackage ./scripts/periodic-note/default.nix {
-            inherit pkgs;
-            nvim = nvim.packages.x86_64-linux.default;
-          };
+      packages.x86_64-linux = {
+        periodic-note = pkgs.callPackage ./scripts/periodic-note/default.nix { };
+        setup-aws = pkgs.callPackage ./scripts/setup-aws/default.nix { };
+        project-session = pkgs.callPackage ./scripts/project-session/default.nix { };
+        gh-actions-review-sha = pkgs.callPackage ./scripts/gh-actions-review-sha/default.nix { };
+        towncrier = pkgs.callPackage ./scripts/towncrier/default.nix { };
+        jj-fix-git-lfs = pkgs.callPackage ./scripts/jj-fix-git-lfs/default.nix { };
+      };
 
-          setup-aws = script-package ./scripts/setup-aws/default.nix;
-
-          project-session = script-package ./scripts/project-session/default.nix;
-
-          gh-actions-review-sha = script-package ./scripts/gh-actions-review-sha/default.nix;
-
-          towncrier = script-package ./scripts/towncrier/default.nix;
-
-          jj-fix-git-lfs = script-package ./scripts/jj-fix-git-lfs/default.nix;
-        };
+      overlays.default = final: prev: self.packages.${prev.stdenv.system} or { };
     };
 }

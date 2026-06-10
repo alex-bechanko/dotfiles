@@ -1,9 +1,9 @@
-{ pkgs, nvim }:
+{ pkgs, ... }:
 let
   app = pkgs.writeShellApplication {
     name = "periodic-note";
-    runtimeInputs = [
-      pkgs.coreutils
+    runtimeInputs = with pkgs; [
+      coreutils
       nvim
     ];
     text = builtins.readFile ./periodic-note.sh;

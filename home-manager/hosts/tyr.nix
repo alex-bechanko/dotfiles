@@ -18,6 +18,9 @@ in
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
+      permittedInsecurePackages = [
+        "electron-39.8.10"
+      ];
     };
   };
 
@@ -28,9 +31,6 @@ in
     ../modules/tree.nix
     ../modules/unzip.nix
     ../modules/zip.nix
-
-    agenix.homeManagerModules.default
-    nvim.homeModules.default
   ];
 
   age.secrets.gemini_api_key.file = ../../secrets/gemini_api_key.age;
@@ -72,7 +72,10 @@ in
     fd.enable = true;
     home-manager.enable = true;
     jq.enable = true;
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      configPath = ".mozilla/firefox";
+    };
     htop.enable = true;
     obsidian.enable = true;
     ripgrep.enable = true;

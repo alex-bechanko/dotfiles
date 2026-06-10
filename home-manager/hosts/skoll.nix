@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  nvim,
-  dotfiles-pkgs,
   ...
 }:
 let
@@ -17,6 +14,9 @@ in
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
+      permittedInsecurePackages = [
+        "electron-39.8.10"
+      ];
     };
   };
 
@@ -28,7 +28,6 @@ in
     ../modules/unzip.nix
     ../modules/zip.nix
 
-    nvim.homeModules.default
   ];
 
   targets.genericLinux = {
@@ -63,12 +62,13 @@ in
       xclip
       yq
 
-      dotfiles-pkgs.periodic-note # create daily note file
-      dotfiles-pkgs.setup-aws # little script to setup aws
-      dotfiles-pkgs.project-session # open a zellij tab for a project
-      dotfiles-pkgs.gh-actions-review-sha # little script to check commit SHAs on github actions
-      dotfiles-pkgs.towncrier # wrapper around towncrier to work sanely
-      dotfiles-pkgs.jj-fix-git-lfs # restore git lfs files in jj working copy
+      # from this repo
+      periodic-note # create daily note file
+      setup-aws # little script to setup aws
+      project-session # open a zellij tab for a project
+      gh-actions-review-sha # little script to check commit SHAs on github actions
+      towncrier # wrapper around towncrier to work sanely
+      jj-fix-git-lfs # restore git lfs files in jj working copy
     ];
   };
 
@@ -113,7 +113,10 @@ in
     fd.enable = true;
     home-manager.enable = true;
     jq.enable = true;
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      configPath = ".mozilla/firefox";
+    };
     htop.enable = true;
     obsidian.enable = true;
     ripgrep.enable = true;
@@ -307,7 +310,12 @@ in
           inherit email;
         };
         aliases = {
-          fix-git-lfs = ["util" "exec" "--" "jj-fix-git-lfs"];
+          fix-git-lfs = [
+            "util"
+            "exec"
+            "--"
+            "jj-fix-git-lfs"
+          ];
         };
       };
     };
