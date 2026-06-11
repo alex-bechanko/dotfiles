@@ -9,11 +9,6 @@ in
 {
   imports = [
     ../modules/identity.nix
-    ../modules/bc.nix
-    ../modules/bitwarden-desktop.nix
-    ../modules/tree.nix
-    ../modules/unzip.nix
-    ../modules/zip.nix
   ];
 
   nixpkgs = {
@@ -41,10 +36,15 @@ in
     };
 
     packages = with pkgs; [
+      bc
+      bitwarden-desktop
       nerd-fonts.inconsolata # font
       nerd-fonts.iosevka # font
       nerd-fonts.iosevka-term # font
+      tree
+      unzip
       xclip
+      zip
 
       # from this repo
       periodic-note # create daily note file
@@ -57,8 +57,6 @@ in
 
   programs = {
     bat.enable = true;
-    bc.enable = true;
-    bitwarden-desktop.enable = true;
     fd.enable = true;
     home-manager.enable = true;
     jq.enable = true;
@@ -69,9 +67,6 @@ in
     htop.enable = true;
     obsidian.enable = true;
     ripgrep.enable = true;
-    tree.enable = true;
-    unzip.enable = true;
-    zip.enable = true;
 
     alacritty = {
       enable = true;

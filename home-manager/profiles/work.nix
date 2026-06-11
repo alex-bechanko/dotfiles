@@ -3,13 +3,10 @@
   ...
 }:
 {
-  imports = [
-    ../modules/slack.nix
-  ];
-
   home.packages = with pkgs; [
     just
     prometheus
+    slack
     tio
     vivid
     yq
@@ -52,8 +49,6 @@
   '';
 
   programs = {
-    slack.enable = true;
-
     # Shift+Return sends a newline escape, mostly for multiline prompts in
     # terminal apps like claude-code
     alacritty.settings.keyboard.bindings = [
