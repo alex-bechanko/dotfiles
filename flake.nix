@@ -76,7 +76,6 @@
       inherit home-manager;
       packages.x86_64-linux = {
         periodic-note = pkgs.callPackage ./scripts/periodic-note/default.nix { };
-        setup-aws = pkgs.callPackage ./scripts/setup-aws/default.nix { };
         project-session = pkgs.callPackage ./scripts/project-session/default.nix { };
         gh-actions-review-sha = pkgs.callPackage ./scripts/gh-actions-review-sha/default.nix { };
         towncrier = pkgs.callPackage ./scripts/towncrier/default.nix { };

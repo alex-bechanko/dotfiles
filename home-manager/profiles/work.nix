@@ -12,7 +12,6 @@
     yq
 
     # from this repo
-    setup-aws # little script to setup aws
     project-session # open a zellij tab for a project
     gh-actions-review-sha # little script to check commit SHAs on github actions
     towncrier # wrapper around towncrier to work sanely
@@ -71,6 +70,10 @@
           source ~/.profile.work
         else
           echo "~/.profile.work not found, skipping"
+        fi
+        if ! aws sts get-caller-identity &>/dev/null; then
+          echo "AWS credentials expired or missing, logging in..."
+          aws sso login
         fi
       '';
       shellAliases = {
