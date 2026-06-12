@@ -85,6 +85,15 @@ in
 
     bash = {
       enable = true;
+      historySize = 100000;
+      historyFileSize = 200000;
+      historyControl = [ "ignorespace" "ignoredups" "erasedups" ];
+      historyIgnore = [ "ls" "ll" "la" "cd" "pwd" "exit" "clear" ];
+      shellOptions = [ "histappend" ];
+      initExtra = ''
+        HISTTIMEFORMAT="%F %T  "
+        PROMPT_COMMAND="''${PROMPT_COMMAND:+$PROMPT_COMMAND; }history -a"
+      '';
       shellAliases = {
         home-manager = "home-manager --flake ${dotfilesDir}#${config.home.username}@${config.dotfiles.host}";
         diff = "diff --color -u";
