@@ -4,6 +4,7 @@
 }:
 {
   home.packages = with pkgs; [
+    gcalcli
     just
     prometheus
     slack
