@@ -13,7 +13,6 @@
 
     # from this repo
     project-session # open a zellij tab for a project
-    gh-actions-review-sha # little script to check commit SHAs on github actions
     towncrier # wrapper around towncrier to work sanely
     jj-fix-git-lfs # restore git lfs files in jj working copy
   ];
