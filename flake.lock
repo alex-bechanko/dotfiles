@@ -284,7 +284,9 @@
         "fenix": "fenix",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs_4",
+        "plugins-blink-compat": "plugins-blink-compat",
         "plugins-catppuccin": "plugins-catppuccin",
+        "plugins-cmp-latex-symbols": "plugins-cmp-latex-symbols",
         "plugins-conform": "plugins-conform",
         "plugins-diffview": "plugins-diffview",
         "plugins-gruvbox": "plugins-gruvbox",
@@ -294,20 +296,37 @@
         "plugins-mini-icons": "plugins-mini-icons",
         "plugins-nvim-web-devicons": "plugins-nvim-web-devicons",
         "plugins-promise-async": "plugins-promise-async",
+        "plugins-render-markdown": "plugins-render-markdown",
         "plugins-ufo": "plugins-ufo",
         "plugins-which-key": "plugins-which-key"
       },
       "locked": {
-        "lastModified": 1780581236,
-        "narHash": "sha256-z1USdXeIY3GdIylNN98wuikjQV66B0uYyZcVBfTQXRo=",
+        "lastModified": 1781663407,
+        "narHash": "sha256-KVHr2oVwmYhl9kqZbDqLUFQsrayabvSF6EGDVRV8okc=",
         "owner": "alex-bechanko",
         "repo": "nvim",
-        "rev": "e3ec8e253fbcebff1c0f3e24b692332a86f19e9d",
+        "rev": "9cdacd3869491d82bfdf4923d6b8cbb38c4d5e56",
         "type": "github"
       },
       "original": {
         "owner": "alex-bechanko",
         "repo": "nvim",
+        "type": "github"
+      }
+    },
+    "plugins-blink-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748464440,
+        "narHash": "sha256-EMQC+2hjgAGYcBoSKkR5LV7jUsl3Oi8rL3K7FNIHXIw=",
+        "owner": "saghen",
+        "repo": "blink.compat",
+        "rev": "1454f14a8d855a578ceeba77c62538fa1459a67c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "saghen",
+        "repo": "blink.compat",
         "type": "github"
       }
     },
@@ -324,6 +343,22 @@
       "original": {
         "owner": "catppuccin",
         "repo": "nvim",
+        "type": "github"
+      }
+    },
+    "plugins-cmp-latex-symbols": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772798656,
+        "narHash": "sha256-95AvId9oT9N9hqEOphKPMdKT6raxc9o0AcEY4CGeI4U=",
+        "owner": "kdheepak",
+        "repo": "cmp-latex-symbols",
+        "rev": "0f8a9539f4c1c8fcf3b5244866b07b9d07282fa2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kdheepak",
+        "repo": "cmp-latex-symbols",
         "type": "github"
       }
     },
@@ -468,6 +503,22 @@
       "original": {
         "owner": "kevinhwang91",
         "repo": "promise-async",
+        "type": "github"
+      }
+    },
+    "plugins-render-markdown": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779729774,
+        "narHash": "sha256-vB8rFNSUW9pcBiCjtsA+LRbuysP8HnpsCQHPEFyHTrM=",
+        "owner": "MeanderingProgrammer",
+        "repo": "render-markdown.nvim",
+        "rev": "5adf0895310c1904e5abfaad40a2baad7fe44a07",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MeanderingProgrammer",
+        "repo": "render-markdown.nvim",
         "type": "github"
       }
     },
