@@ -301,11 +301,11 @@
         "plugins-which-key": "plugins-which-key"
       },
       "locked": {
-        "lastModified": 1781803833,
-        "narHash": "sha256-4k2SZ955z/n5J7uc6X5Mf26+oiAMYcmok19BzbgeuCo=",
+        "lastModified": 1781804601,
+        "narHash": "sha256-/pt/RbOIKo6zLjkynyyduXtCHUG12829hBJTwKFOxjA=",
         "owner": "alex-bechanko",
         "repo": "nvim",
-        "rev": "a51213837e45f64194e9bc36481e596e4d60df78",
+        "rev": "d6add4397e07bbbdd7bac6d41e7aaae5203c4223",
         "type": "github"
       },
       "original": {
