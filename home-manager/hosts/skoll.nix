@@ -35,7 +35,6 @@
       tio
       tree
       unzip
-      vivid
       xclip
       yq
       zip
