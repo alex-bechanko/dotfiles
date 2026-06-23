@@ -77,6 +77,7 @@
     starship.enable = true;
     towncrier.enable = true;
     zellij.enable = true;
+    zk.enable = true;
 
     git = {
       enable = true;
