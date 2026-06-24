@@ -14,8 +14,10 @@
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     nvim.url = "github:alex-bechanko/nvim";
+    nvim.inputs.nixpkgs.follows = "nixpkgs";
 
     claude-code-nix.url = "github:sadjow/claude-code-nix";
+    claude-code-nix.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 
