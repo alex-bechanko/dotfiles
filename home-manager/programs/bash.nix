@@ -26,12 +26,6 @@
       export LS_COLORS="$(vivid generate gruvbox-dark)"
       if [ -f ~/.profile.work ]; then
         source ~/.profile.work
-      else
-        echo "~/.profile.work not found, skipping"
-      fi
-      if ! aws sts get-caller-identity &>/dev/null; then
-        echo "AWS credentials expired or missing, logging in..."
-        aws sso login
       fi
     '';
     shellAliases = {
