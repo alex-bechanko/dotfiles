@@ -81,6 +81,6 @@
         jj-fix-git-lfs = pkgs.callPackage ./scripts/jj-fix-git-lfs/default.nix { };
       };
 
-      overlays.default = final: prev: self.packages.${prev.stdenv.system} or { };
+      overlays.default = final: prev: self.packages.${prev.stdenv.hostPlatform.system} or { };
     };
 }

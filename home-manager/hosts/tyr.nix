@@ -25,9 +25,6 @@
       unzip
       xclip
       zip
-
-      # from dotfiles repo
-      periodic-note
     ];
 
     sessionPath = [

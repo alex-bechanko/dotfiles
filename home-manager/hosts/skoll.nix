@@ -40,7 +40,6 @@
       zip
 
       # from dotfiles repo
-      periodic-note
       project-session
     ];
 

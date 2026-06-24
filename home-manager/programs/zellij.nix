@@ -20,7 +20,7 @@
             pane
           }
           tab name="notes" {
-            pane command="periodic-note" {
+            pane command="zk day" {
               args "day"
             }
           }
@@ -34,28 +34,5 @@
       copy_command = "xclip -selection clipboard";
       copy_on_select = true;
     };
-
-    extraConfig = ''
-      keybinds {
-      normal {
-        unbind "Ctrl q"
-        bind "Alt s" {
-          Run "periodic-note" "day" {
-            floating true
-            x "0"
-            y "0"
-            width "100%"
-            height "50%"
-            close_on_exit true
-          }
-        }
-      }
-      session {
-        bind "Ctrl q" {
-          Quit
-        }
-      }
-      }
-    '';
   };
 }
