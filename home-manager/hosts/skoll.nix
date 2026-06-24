@@ -25,6 +25,7 @@
       bc
       bitwarden-cli
       bitwarden-desktop
+      gcalcli
       just
       nerd-fonts.inconsolata
       nerd-fonts.iosevka
