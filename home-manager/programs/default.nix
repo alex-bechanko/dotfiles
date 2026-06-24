@@ -13,6 +13,7 @@
     ./starship.nix
     ./towncrier.nix
     ./zellij.nix
+    ./zk.nix
     ./zsh.nix
   ];
 }
