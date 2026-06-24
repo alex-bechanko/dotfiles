@@ -69,6 +69,7 @@
     direnv.enable = true;
     firefox.enable = true;
     fd.enable = true;
+    fzf.enable = true;
     gh.enable = true;
     home-manager.enable = true;
     jq.enable = true;
