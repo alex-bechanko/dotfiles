@@ -16,6 +16,7 @@
 
     packages = with pkgs; [
       bc
+      bitwarden-cli
       bitwarden-desktop
       nerd-fonts.inconsolata
       nerd-fonts.iosevka

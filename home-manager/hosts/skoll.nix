@@ -23,6 +23,7 @@
 
     packages = with pkgs; [
       bc
+      bitwarden-cli
       bitwarden-desktop
       just
       nerd-fonts.inconsolata
