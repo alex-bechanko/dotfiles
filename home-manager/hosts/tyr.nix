@@ -65,6 +65,7 @@
     ripgrep.enable = true;
     starship.enable = true;
     zellij.enable = true;
+    zk.enable = true;
     zsh.enable = true;
 
     git = {
