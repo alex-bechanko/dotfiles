@@ -11,6 +11,7 @@
     ./gh.nix
     ./git.nix
     ./jujutsu.nix
+    ./project-session.nix
     ./starship.nix
     ./towncrier.nix
     ./zellij.nix

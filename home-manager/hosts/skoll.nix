@@ -38,9 +38,6 @@
       xclip
       yq
       zip
-
-      # from dotfiles repo
-      project-session
     ];
 
     sessionPath = [
@@ -80,6 +77,11 @@
     towncrier.enable = true;
     zellij.enable = true;
     zk.enable = true;
+
+    project-session = {
+      enable = true;
+      defaultCommand = "claude";
+    };
 
     git = {
       enable = true;

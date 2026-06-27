@@ -70,6 +70,11 @@
     zk.enable = true;
     zsh.enable = true;
 
+    project-session = {
+      enable = true;
+      defaultCommand = "agy --sandbox";
+    };
+
     git = {
       enable = true;
       settings.user.email = "alexbechanko@gmail.com";
