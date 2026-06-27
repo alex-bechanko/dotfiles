@@ -20,7 +20,7 @@
             pane
           }
           tab name="notes" {
-            pane command="zk day" {
+            pane command="zk" {
               args "day"
             }
           }
