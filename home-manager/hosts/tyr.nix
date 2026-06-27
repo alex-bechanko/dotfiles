@@ -23,6 +23,7 @@
     homeDirectory = "/home/alex";
 
     packages = with pkgs; [
+      agenix
       bc
       bitwarden-cli
       bitwarden-desktop
@@ -57,6 +58,7 @@
     direnv.enable = true;
     discord.enable = true;
     fd.enable = true;
+    gcalcli.enable = true;
     firefox.enable = true;
     home-manager.enable = true;
     jq.enable = true;

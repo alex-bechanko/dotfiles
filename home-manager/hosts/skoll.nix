@@ -22,10 +22,10 @@
     homeDirectory = "/home/alexbechanko";
 
     packages = with pkgs; [
+      agenix
       bc
       bitwarden-cli
       bitwarden-desktop
-      gcalcli
       just
       nerd-fonts.inconsolata
       nerd-fonts.iosevka
@@ -69,6 +69,7 @@
     firefox.enable = true;
     fd.enable = true;
     fzf.enable = true;
+    gcalcli.enable = true;
     gh.enable = true;
     home-manager.enable = true;
     jq.enable = true;

@@ -7,6 +7,7 @@
     ./direnv.nix
     ./discord.nix
     ./firefox.nix
+    ./gcalcli.nix
     ./gh.nix
     ./git.nix
     ./jujutsu.nix

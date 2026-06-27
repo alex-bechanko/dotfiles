@@ -36,6 +36,7 @@
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         overlays = [
+          agenix.overlays.default
           claude-code-nix.overlays.default
           nvim.overlays.default
           self.overlays.default
@@ -58,6 +59,7 @@
           inherit pkgs;
           modules = [
             ./home-manager/hosts/skoll.nix
+            agenix.homeManagerModules.default
             nvim.homeModules.default
           ];
         };
