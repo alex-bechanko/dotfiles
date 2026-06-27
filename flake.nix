@@ -19,6 +19,9 @@
     claude-code-nix.url = "github:sadjow/claude-code-nix";
     claude-code-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    antigravity-nix.url = "github:jacopone/antigravity-nix";
+    antigravity-nix.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs =
@@ -29,6 +32,7 @@
       nixos-hardware,
       nvim,
       agenix,
+      antigravity-nix,
       claude-code-nix,
       ...
     }:
@@ -37,6 +41,7 @@
         system = "x86_64-linux";
         overlays = [
           agenix.overlays.default
+          antigravity-nix.overlays.default
           claude-code-nix.overlays.default
           nvim.overlays.default
           self.overlays.default
