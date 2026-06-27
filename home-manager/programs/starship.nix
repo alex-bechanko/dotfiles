@@ -25,6 +25,9 @@
           git_commit.disabled = true;
           git_metrics.disabled = true;
           git_branch.disabled = true;
+          nix_shell.disabled = true;
+
+          python.format = "via [$symbol$virtualenv]($style) ";
 
           custom = {
             # Custom module for jj status
