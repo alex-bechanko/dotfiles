@@ -33,7 +33,7 @@
       };
 
       alias = {
-        day = ''zk new --no-input --group daily ''${1:+--date="$1"}'';
+        day = ''zk new --no-input --group daily "$ZK_NOTEBOOK_DIR/areas/periodic/daily" ''${1:+--date="$1"}'';
         day-previous-todos = "zk list areas/periodic/daily --sort path- --limit 1 --format '{{abs-path}}' -q | xargs awk '/^## Todo/{found=1; next} found && /^## /{exit} found{print}'";
         day-meetings = ''
           gcalcli agenda --nocolor --tsv --details attendees "$(date +%Y-%m-%d)" "$(date -d tomorrow +%Y-%m-%d)" | awk -F'\t'  'NR > 1 && $2 != "" {printf "### %s–%s %s\n\n", $2, $4, $5}'
