@@ -52,6 +52,7 @@
 
   programs = {
     alacritty.enable = true;
+    antigravity-cli.enable = true;
     bash.enable = true;
     bat.enable = true;
     direnv.enable = true;
@@ -68,11 +69,6 @@
     zellij.enable = true;
     zk.enable = true;
     zsh.enable = true;
-
-    antigravity-cli = {
-      enable = true;
-      package = pkgs.google-antigravity-cli;
-    };
 
     project-session = {
       enable = true;

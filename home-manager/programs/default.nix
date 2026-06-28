@@ -2,6 +2,7 @@
 {
   imports = [
     ./alacritty.nix
+    ./antigravity.nix
     ./bash.nix
     ./claude-code.nix
     ./direnv.nix
