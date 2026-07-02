@@ -21,14 +21,14 @@
 
         weekly = {
           paths = [ "areas/periodic/weekly" ];
-          note.filename = "{{format-date now '%Y-%m-%d'}}";
+          note.filename = "{{format-date now 'wk_%V_%Y-%m-%d'}}";
           note.extension = "md";
           note.template = "weekly.hbs";
         };
 
         quarterly = {
           paths = [ "areas/periodic/quarterly" ];
-          note.filename = ''{{sh "date +%Y-Q$(( ($(date +%-m) - 1) / 3 + 1 ))"}}'';
+          note.filename = ''{{sh "date +qrtr_%Y-Q$(( ($(date +%-m) - 1) / 3 + 1 ))"}}'';
           note.extension = "md";
           note.template = "quarterly.hbs";
         };
