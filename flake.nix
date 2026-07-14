@@ -22,6 +22,9 @@
     antigravity-nix.url = "github:jacopone/antigravity-nix";
     antigravity-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    rtk.url = "github:rtk-ai/rtk/v0.43.0";
+    rtk.flake = false;
+
   };
 
   outputs =
@@ -34,6 +37,7 @@
       agenix,
       antigravity-nix,
       claude-code-nix,
+      rtk,
       ...
     }:
     let
@@ -84,9 +88,10 @@
 
       inherit home-manager;
       packages.x86_64-linux = {
-        project-session = pkgs.callPackage ./scripts/project-session/default.nix { };
-        towncrier = pkgs.callPackage ./scripts/towncrier/default.nix { };
-        jj-fix-git-lfs = pkgs.callPackage ./scripts/jj-fix-git-lfs/default.nix { };
+        project-session = pkgs.callPackage ./packages/project-session/default.nix { };
+        towncrier = pkgs.callPackage ./packages/towncrier/default.nix { };
+        jj-fix-git-lfs = pkgs.callPackage ./packages/jj-fix-git-lfs/default.nix { };
+        rtk = pkgs.callPackage ./packages/rtk/default.nix { src = rtk; };
       };
 
       overlays.default = final: prev: self.packages.${prev.stdenv.hostPlatform.system} or { };

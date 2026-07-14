@@ -657,7 +657,24 @@
         "home-manager": "home-manager_2",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nvim": "nvim"
+        "nvim": "nvim",
+        "rtk": "rtk"
+      }
+    },
+    "rtk": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783582394,
+        "narHash": "sha256-kPNJUq1z/a46jVnX3Lm3WstXXg/C5myDqWPZzXjZl3o=",
+        "owner": "rtk-ai",
+        "repo": "rtk",
+        "rev": "5d32d0736f686b69d1e8b9dc45c007d4eb77a0a2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rtk-ai",
+        "repo": "rtk",
+        "type": "github"
       }
     },
     "rust-analyzer-src": {
