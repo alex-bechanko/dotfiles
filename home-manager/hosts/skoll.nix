@@ -80,7 +80,7 @@
 
     project-session = {
       enable = true;
-      defaultCommand = "claude";
+      defaultCommand = "direnv exec . claude";
     };
 
     git = {
