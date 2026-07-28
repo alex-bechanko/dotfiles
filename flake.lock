@@ -332,11 +332,11 @@
         "plugins-which-key": "plugins-which-key"
       },
       "locked": {
-        "lastModified": 1783023173,
-        "narHash": "sha256-eEyXCb/SURWKd8Afs6Tvx8v0srhRPNEmojwXn1JS2/o=",
+        "lastModified": 1785265560,
+        "narHash": "sha256-MfYtHvHe5nH78+9SGL+PytopqOz75V6TXAs1/2d6kBg=",
         "owner": "alex-bechanko",
         "repo": "nvim",
-        "rev": "1adf937dcaea8ba87c88f9192d202c1f74de6616",
+        "rev": "7b3d1a7c0ff9f0bfe81ec33cf9c40ad8679dbca5",
         "type": "github"
       },
       "original": {
@@ -664,15 +664,16 @@
     "rtk": {
       "flake": false,
       "locked": {
-        "lastModified": 1783582394,
-        "narHash": "sha256-kPNJUq1z/a46jVnX3Lm3WstXXg/C5myDqWPZzXjZl3o=",
+        "lastModified": 1782636896,
+        "narHash": "sha256-n5bkPPsrdM4fE5ltocTjlq+JwRgp39yib6S79fci4m4=",
         "owner": "rtk-ai",
         "repo": "rtk",
-        "rev": "5d32d0736f686b69d1e8b9dc45c007d4eb77a0a2",
+        "rev": "5a7880d404db8364d602f2ecdc41dd790f64013f",
         "type": "github"
       },
       "original": {
         "owner": "rtk-ai",
+        "ref": "v0.43.0",
         "repo": "rtk",
         "type": "github"
       }
