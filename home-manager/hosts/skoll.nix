@@ -30,6 +30,7 @@
       nerd-fonts.inconsolata
       nerd-fonts.iosevka
       nerd-fonts.iosevka-term
+      picocom
       prometheus
       slack
       tio
