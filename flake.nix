@@ -5,6 +5,9 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Pinned solely to hold bitwarden-desktop at 2026.6.0 while copy/paste is broken for 2026.7.0
+    nixpkgs-bitwarden.url = "github:nixos/nixpkgs/b5aa0fbd538984f6e3d201be0005b4463d8b09f8";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -31,6 +34,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-bitwarden,
       home-manager,
       nixos-hardware,
       nvim,
@@ -48,6 +52,7 @@
           antigravity-nix.overlays.default
           claude-code-nix.overlays.default
           nvim.overlays.default
+          self.overlays.bitwarden-pin
           self.overlays.default
         ];
       };
@@ -95,5 +100,20 @@
       };
 
       overlays.default = final: prev: self.packages.${prev.stdenv.hostPlatform.system} or { };
+
+      overlays.bitwarden-pin =
+        final: prev:
+        let
+          pinned = import nixpkgs-bitwarden {
+            inherit (prev.stdenv.hostPlatform) system;
+            config.permittedInsecurePackages = [
+              # bitwarden-desktop 2026.6.0 is built against an EOL electron
+              "electron-39.8.10"
+            ];
+          };
+        in
+        prev.lib.getAttrs [
+          "bitwarden-desktop"
+        ] pinned;
     };
 }
