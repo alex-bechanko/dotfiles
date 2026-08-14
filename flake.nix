@@ -81,7 +81,7 @@
 
       nixosConfigurations = {
         "tyr" = nixpkgs.lib.nixosSystem {
-          system = "x86_64";
+          system = "x86_64-linux";
           modules = [
             nixos-hardware.nixosModules.lenovo-thinkpad-t14s
             ./nixos/tyr/configuration.nix
