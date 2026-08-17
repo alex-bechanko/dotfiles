@@ -73,6 +73,7 @@
     jq.enable = true;
     htop.enable = true;
     obsidian.enable = true;
+    onepassword.enable = true;
     ripgrep.enable = true;
     starship.enable = true;
     towncrier.enable = true;

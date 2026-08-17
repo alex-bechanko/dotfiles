@@ -11,6 +11,7 @@
     ./gh.nix
     ./git.nix
     ./jujutsu.nix
+    ./onepassword.nix
     ./project-session.nix
     ./starship.nix
     ./towncrier.nix
