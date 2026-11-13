@@ -10,24 +10,32 @@
       {
         enableBashIntegration = true;
         settings = {
-          # by default the region is also listed, but thus far I don't care about that
-          # on my hosts
+          format = builtins.concatStringsSep "" [
+            "$username$hostname$localip$shlvl$singularity$kubernetes$nats$directory"
+            "$vcsh$vcs$custom"
+            "$docker_context$package$bun$c$cmake$cobol$cpp$daml$dart$deno$dotnet$elixir$elm$erlang$fennel"
+            "$fortran$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$maven$mojo$nim$nodejs"
+            "$ocaml$odin$opa$perl$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala"
+            "$solidity$swift$terraform$typst$vlang$vagrant$xmake$zig$buf$guix_shell$nix_shell$conda$pixi"
+            "$meson$spack$memory_usage$aws$gcloud$openstack$azure$direnv$env_var$mise$crystal$sudo"
+            "$cmd_duration$line_break$jobs$battery$time$status$container$netns$os$shell$character"
+          ];
+
           aws = {
             format = "on [$symbol($profile)]($style) ";
           };
+
           hostname = {
             ssh_only = false;
             format = "[$hostname]($style) ";
           };
 
-          # Disable built-in git modules (replaced by custom modules below)
-          git_status.disabled = true;
-          git_commit.disabled = true;
-          git_metrics.disabled = true;
-          git_branch.disabled = true;
-          nix_shell.disabled = true;
-
           python.format = "via [$symbol$virtualenv]($style) ";
+
+          vcs.order = [
+            "jj"
+            "git"
+          ];
 
           custom = {
             # Custom module for jj status
@@ -35,54 +43,8 @@
               description = "The current jj status";
               when = "jj --ignore-working-copy root";
               symbol = "🥋 ";
-              command = ''
-                jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
-                  separate(" ",
-                    change_id.shortest(4),
-                    bookmarks,
-                    "|",
-                    concat(
-                      if(conflict, "💥"),
-                      if(divergent, "🚧"),
-                      if(hidden, "👻"),
-                      if(immutable, "🔒"),
-                    ),
-                    raw_escape_sequence("\x1b[1;32m") ++ if(empty, "(empty)"),
-                    raw_escape_sequence("\x1b[1;32m") ++ coalesce(
-                      description.first_line(),
-                      "(no description set)",
-                    ) ++ raw_escape_sequence("\x1b[0m"),
-                  )
-                '
-              '';
-            };
-
-            git_status = {
-              when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1 && ! jj --ignore-working-copy root >/dev/null 2>&1";
-              command = "starship module git_status";
-              style = "";
-              description = "Only show git_status if we are in a Git repo but NOT a jj repo";
-            };
-
-            git_commit = {
-              when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1 && ! jj --ignore-working-copy root >/dev/null 2>&1";
-              command = "starship module git_commit";
-              style = "";
-              description = "Only show git_commit if we are in a Git repo but NOT a jj repo";
-            };
-
-            git_metrics = {
-              when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1 && ! jj --ignore-working-copy root >/dev/null 2>&1";
-              command = "starship module git_metrics";
-              style = "";
-              description = "Only show git_metrics if we are in a Git repo but NOT a jj repo";
-            };
-
-            git_branch = {
-              when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1 && ! jj --ignore-working-copy root >/dev/null 2>&1";
-              command = "starship module git_branch";
-              style = "";
-              description = "Only show git_branch if we are in a Git repo but NOT a jj repo";
+              # space at end of command string is intentional
+              command = ''jj log -r @ --no-graph --ignore-working-copy --limit 1 -T 'truncate_end(100, description.first_line(), "…")' '';
             };
           };
         };
