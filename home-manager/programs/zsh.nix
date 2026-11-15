@@ -19,7 +19,7 @@
         diff = "diff --color -u";
       };
 
-      initExtra = ''
+      initContent = ''
         export LS_COLORS="$(vivid generate gruvbox-dark)"
       '';
     };
